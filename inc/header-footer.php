@@ -2,14 +2,10 @@
 
 // --- Helper : URLs auth avec support UM ---
 function ufc_get_auth_urls() {
-    $login_url    = wp_login_url( home_url( '/' ) );
-    $register_url = wp_registration_url();
-    if ( class_exists( 'UM' ) ) {
-        $lp = get_page_by_path( 'connexion' );
-        if ( $lp ) { $login_url = get_permalink( $lp ); }
-        $rp = get_page_by_path( 'inscription' );
-        if ( $rp ) { $register_url = get_permalink( $rp ); }
-    }
+    $login_url    = ufc_get_um_page_url( 'login' );
+    $register_url = ufc_get_um_page_url( 'register' );
+    if ( ! $login_url )    { $login_url    = wp_login_url( home_url( '/' ) ); }
+    if ( ! $register_url ) { $register_url = wp_registration_url(); }
     return array( 'login' => $login_url, 'register' => $register_url );
 }
 
