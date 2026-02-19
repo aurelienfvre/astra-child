@@ -12,7 +12,7 @@ $card_excerpt = esc_html( wp_trim_words( get_the_excerpt( $post ), 15, '...' ) )
 
 <article class="ufc-event-card">
     <?php if ( $card_image ) : ?>
-        <div class="ufc-card-image" style="background-image: url(<?php echo $card_link; ?>);">
+        <div class="ufc-card-image" style="background-image: url(<?php echo esc_url( $card_image ); ?>);">
     <?php else : ?>
         <div class="ufc-card-image ufc-card-no-image">
     <?php endif; ?>

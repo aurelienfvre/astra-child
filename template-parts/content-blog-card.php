@@ -4,6 +4,10 @@ if ( ! isset( $post ) || ! $post ) return;
 $blog_title   = esc_html( get_the_title( $post ) );
 $blog_link    = esc_url( get_permalink( $post ) );
 $blog_image   = get_the_post_thumbnail_url( $post, 'ufc-card-thumb' );
+if ( ! $blog_image ) {
+    preg_match( '/<img[^>]+src=["\']([^"\']+)/i', get_post_field( 'post_content', $post->ID ), $m );
+    if ( ! empty( $m[1] ) ) { $blog_image = $m[1]; }
+}
 $blog_date    = esc_html( get_the_date( 'j M Y', $post ) );
 $blog_excerpt = esc_html( wp_trim_words( get_the_excerpt( $post ), 20, '...' ) );
 $blog_author  = esc_html( get_the_author_meta( 'display_name', $post->post_author ) );
