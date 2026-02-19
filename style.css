@@ -1,0 +1,5079 @@
+
+:root {
+    --ufc-red: #d20a0a;           
+    --ufc-red-dark: #a00808;      
+    --ufc-gold: #c59e5e;          
+    --ufc-gold-dark: #a07d3f;     
+    --ufc-black: #111111;         
+    --ufc-dark: #1a1a1a;          
+    --ufc-darker: #0a0a0a;        
+    --ufc-gray: #2a2a2a;          
+    --ufc-gray-light: #999999;    
+    --ufc-white: #f0f0f0;         
+    --ufc-white-pure: #ffffff;    
+
+    --font-title: 'Oswald', 'Impact', sans-serif;   
+    --font-body: 'Roboto', 'Helvetica Neue', sans-serif; 
+
+    --section-padding: 80px 0;
+    --container-max: 1200px;
+    --border-radius: 6px;
+
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+body,
+html {
+    background-color: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    font-family: var(--font-body) !important;
+    scroll-behavior: smooth;
+}
+
+a {
+    color: var(--ufc-gold);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+a:hover {
+    color: var(--ufc-red);
+}
+
+.ast-container,
+.site-content,
+#content,
+#page {
+    background-color: var(--ufc-black) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-title) !important;
+    text-transform: uppercase;
+    color: var(--ufc-white-pure);
+    letter-spacing: 1px;
+}
+
+::selection {
+    background: var(--ufc-red);
+    color: var(--ufc-white-pure);
+}
+
+
+header.site-header,
+.site-header {
+    display: none !important;
+}
+
+.ufc-header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: var(--ufc-black);
+    border-bottom: 3px solid var(--ufc-red);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+    padding: 0 25px;
+}
+
+.ufc-header-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    padding-bottom: 4px;
+}
+
+.ufc-header-logo {
+    font-family: var(--font-title) !important;
+    color: var(--ufc-white-pure) !important;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none !important;
+    flex-shrink: 0;
+}
+.ufc-header-logo:hover {
+    color: var(--ufc-gold) !important;
+}
+.ufc-header-logo img,
+.ufc-header-logo .custom-logo {
+    max-height: 50px;
+    width: auto;
+}
+
+.ufc-desktop-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.ufc-desktop-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 5px;
+}
+
+.ufc-desktop-menu .menu-item a {
+    color: var(--ufc-white) !important;
+    font-family: var(--font-title);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    padding: 8px 15px;
+    text-decoration: none !important;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.ufc-desktop-menu .menu-item a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--ufc-red);
+    transition: width var(--transition-normal), left var(--transition-normal);
+}
+.ufc-desktop-menu .menu-item a:hover::after,
+.ufc-desktop-menu .current-menu-item a::after {
+    width: 80%;
+    left: 10%;
+}
+.ufc-desktop-menu .menu-item a:hover {
+    color: var(--ufc-red) !important;
+}
+
+.ufc-desktop-menu .current-menu-item a {
+    color: var(--ufc-red) !important;
+    font-weight: 700;
+}
+
+.ufc-auth-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.ufc-auth-greeting {
+    color: var(--ufc-gold);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.ufc-auth-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    font-family: var(--font-title);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+    text-decoration: none !important;
+}
+
+.ufc-btn-login {
+    border: 2px solid var(--ufc-gold);
+    color: var(--ufc-gold) !important;
+    background: transparent;
+}
+.ufc-btn-login:hover {
+    background: var(--ufc-gold);
+    color: var(--ufc-black) !important;
+}
+
+.ufc-btn-register {
+    background: var(--ufc-red);
+    color: var(--ufc-white-pure) !important;
+    border: 2px solid var(--ufc-red);
+}
+.ufc-btn-register:hover {
+    background: var(--ufc-red-dark);
+    border-color: var(--ufc-red-dark);
+}
+
+.ufc-btn-account {
+    border: 2px solid var(--ufc-gold);
+    color: var(--ufc-gold) !important;
+    background: transparent;
+}
+.ufc-btn-account:hover {
+    background: var(--ufc-gold);
+    color: var(--ufc-black) !important;
+}
+
+.ufc-btn-logout {
+    border: 2px solid var(--ufc-gray);
+    color: var(--ufc-gray-light) !important;
+    background: transparent;
+}
+.ufc-btn-logout:hover {
+    border-color: var(--ufc-red);
+    color: var(--ufc-red) !important;
+}
+
+
+.ufc-burger-btn {
+    display: none; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: 2px solid var(--ufc-gold);
+    border-radius: var(--border-radius);
+    padding: 8px 10px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: border-color var(--transition-fast);
+    margin-left: 10px;
+}
+.ufc-burger-btn:hover {
+    border-color: var(--ufc-red);
+}
+
+
+.ufc-burger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ufc-gold);
+    transition: all var(--transition-normal);
+    transform-origin: center;
+}
+
+.ufc-burger-btn.active .ufc-burger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+    background: var(--ufc-red);
+}
+.ufc-burger-btn.active .ufc-burger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.ufc-burger-btn.active .ufc-burger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+    background: var(--ufc-red);
+}
+
+.ufc-mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1050;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+}
+.ufc-mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ufc-mobile-panel {
+    position: fixed;
+    top: 0;
+    right: -320px; 
+    width: 300px;
+    max-width: 85vw;
+    height: 100vh;
+    background: var(--ufc-darker);
+    z-index: 1100;
+    transition: right var(--transition-normal);
+    overflow-y: auto;
+    border-left: 3px solid var(--ufc-red);
+    display: flex;
+    flex-direction: column;
+}
+.ufc-mobile-panel.active {
+    right: 0; 
+}
+
+.ufc-mobile-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid var(--ufc-gray);
+}
+.ufc-mobile-panel-title {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    color: var(--ufc-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.ufc-mobile-close {
+    background: none;
+    border: none;
+    color: var(--ufc-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    transition: color var(--transition-fast);
+}
+.ufc-mobile-close:hover {
+    color: var(--ufc-red);
+}
+
+.ufc-mobile-panel-body {
+    padding: 20px;
+    flex: 1;
+}
+
+.ufc-mobile-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.ufc-mobile-menu-list li {
+    border-bottom: 1px solid var(--ufc-gray);
+}
+.ufc-mobile-menu-list li a {
+    display: block;
+    padding: 15px 10px;
+    color: var(--ufc-white) !important;
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: all var(--transition-fast);
+}
+.ufc-mobile-menu-list li a:hover {
+    color: var(--ufc-red) !important;
+    background: rgba(210, 10, 10, 0.1);
+}
+.ufc-mobile-menu-list .current-menu-item a {
+    color: var(--ufc-red) !important;
+    border-left: 3px solid var(--ufc-red);
+}
+
+.ufc-mobile-auth {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 2px solid var(--ufc-gold);
+}
+.ufc-mobile-user {
+    color: var(--ufc-gold);
+    font-family: var(--font-title);
+    font-size: 1rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ufc-mobile-user i {
+    font-size: 1.5rem;
+}
+.ufc-mobile-auth-link {
+    display: block;
+    padding: 12px 15px;
+    color: var(--ufc-white) !important;
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    border-radius: var(--border-radius);
+    margin-bottom: 8px;
+    transition: all var(--transition-fast);
+    border: 1px solid var(--ufc-gray);
+}
+.ufc-mobile-auth-link:hover {
+    background: var(--ufc-red);
+    border-color: var(--ufc-red);
+    color: var(--ufc-white-pure) !important;
+}
+.ufc-mobile-register {
+    background: var(--ufc-red);
+    border-color: var(--ufc-red);
+}
+.ufc-mobile-register:hover {
+    background: var(--ufc-red-dark);
+}
+.ufc-mobile-logout {
+    border-color: var(--ufc-gray);
+    color: var(--ufc-gray-light) !important;
+}
+.ufc-mobile-logout:hover {
+    border-color: var(--ufc-red);
+    color: var(--ufc-red) !important;
+    background: transparent;
+}
+
+.ufc-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        rgba(10, 10, 10, 0.95) 0%,
+        rgba(210, 10, 10, 0.15) 50%,
+        rgba(10, 10, 10, 0.95) 100%
+    ), var(--ufc-black);
+    overflow: hidden;
+    padding: 60px 20px;
+}
+
+.ufc-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(210, 10, 10, 0.1) 0%, transparent 70%),
+        radial-gradient(ellipse at 80% 50%, rgba(197, 158, 94, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.ufc-hero::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -10%;
+    width: 120%;
+    height: 3px;
+    background: var(--ufc-red);
+    transform: rotate(-35deg);
+    opacity: 0.3;
+}
+
+.ufc-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.ufc-hero-subtitle {
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    color: var(--ufc-gold);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.ufc-hero-title {
+    font-family: var(--font-title) !important;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    color: var(--ufc-white-pure) !important;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+.ufc-hero-title .ufc-text-red {
+    color: var(--ufc-red);
+}
+
+.ufc-hero-description {
+    font-size: 1.15rem;
+    color: var(--ufc-gray-light);
+    max-width: 600px;
+    margin: 0 auto 35px;
+    line-height: 1.7;
+}
+
+.ufc-hero-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ufc-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 35px;
+    font-family: var(--font-title);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-normal);
+    text-decoration: none !important;
+}
+
+.ufc-hero-btn-primary {
+    background: var(--ufc-red);
+    color: var(--ufc-white-pure) !important;
+    border: 2px solid var(--ufc-red);
+}
+.ufc-hero-btn-primary:hover {
+    background: var(--ufc-red-dark);
+    border-color: var(--ufc-red-dark);
+    color: var(--ufc-white-pure) !important;
+}
+
+.ufc-hero-btn-secondary {
+    background: transparent;
+    color: var(--ufc-gold) !important;
+    border: 2px solid var(--ufc-gold);
+}
+.ufc-hero-btn-secondary:hover {
+    background: var(--ufc-gold);
+    color: var(--ufc-black) !important;
+}
+
+.ufc-section {
+    padding: var(--section-padding);
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.ufc-section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.ufc-section-title {
+    font-family: var(--font-title) !important;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--ufc-white-pure) !important;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.ufc-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--ufc-red);
+}
+
+.ufc-section-subtitle {
+    color: var(--ufc-gray-light);
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+.ufc-event-card {
+    background: var(--ufc-dark);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--ufc-gray);
+    transition: all var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+}
+.ufc-event-card:hover {
+    border-color: var(--ufc-red);
+}
+
+.ufc-main-event {
+    border: 2px solid var(--ufc-red) !important;
+}
+.ufc-main-event .ufc-card-image {
+    height: 350px;
+}
+
+.ufc-card-image {
+    height: 220px;
+    background-color: var(--ufc-gray);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.ufc-card-no-image {
+    background: linear-gradient(135deg, var(--ufc-black) 0%, rgba(210, 10, 10, 0.2) 50%, var(--ufc-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ufc-card-no-image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border: 2px solid rgba(210, 10, 10, 0.3);
+    border-radius: 50%;
+}
+.ufc-card-no-image::after {
+    content: '\f438';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: rgba(210, 10, 10, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.ufc-card-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.ufc-badge-main {
+    align-self: flex-end;
+    background: var(--ufc-red);
+    color: var(--ufc-white-pure);
+    font-family: var(--font-title);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    clip-path: polygon(8% 0, 100% 0, 92% 100%, 0% 100%);
+    animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.ufc-card-date {
+    align-self: flex-start;
+    margin-top: auto;
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--ufc-gold);
+    font-family: var(--font-title);
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.ufc-card-date i {
+    margin-right: 5px;
+}
+
+.ufc-card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ufc-card-title {
+    font-family: var(--font-title) !important;
+    font-size: 1.3rem;
+    color: var(--ufc-white-pure) !important;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+.ufc-main-event .ufc-card-title {
+    font-size: 1.8rem;
+}
+
+.ufc-card-venue,
+.ufc-card-time {
+    color: var(--ufc-gray-light);
+    font-size: 0.85rem;
+    margin: 0 0 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.ufc-card-venue i,
+.ufc-card-time i {
+    color: var(--ufc-gold);
+    width: 16px;
+}
+
+.ufc-card-excerpt {
+    color: var(--ufc-gray-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 10px 0;
+    flex: 1;
+}
+
+.ufc-card-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--ufc-gold) !important;
+    border: 2px solid var(--ufc-gold);
+    padding: 10px 20px;
+    font-family: var(--font-title);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    text-decoration: none !important;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-normal);
+    margin-top: auto;
+    width: 100%;
+}
+.ufc-card-btn:hover {
+    background: var(--ufc-gold);
+    color: var(--ufc-black) !important;
+}
+
+.ufc-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 25px;
+}
+
+.ufc-post-card {
+    background: var(--ufc-dark);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--ufc-gray);
+    transition: all var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+}
+.ufc-post-card:hover {
+    border-color: var(--ufc-gold);
+}
+
+.ufc-post-image {
+    height: 200px;
+    background-color: var(--ufc-gray);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.ufc-post-no-image {
+    background: linear-gradient(135deg, var(--ufc-black) 0%, rgba(197, 158, 94, 0.15) 50%, var(--ufc-dark) 100%);
+}
+
+.ufc-post-cat {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--ufc-red);
+    color: var(--ufc-white-pure);
+    font-family: var(--font-title);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 4px 12px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+.ufc-post-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ufc-post-date {
+    color: var(--ufc-gold);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ufc-post-title {
+    font-family: var(--font-title) !important;
+    font-size: 1.2rem;
+    margin: 0 0 10px;
+    line-height: 1.3;
+}
+.ufc-post-title a {
+    color: var(--ufc-white-pure) !important;
+    text-decoration: none !important;
+    transition: color var(--transition-fast);
+}
+.ufc-post-title a:hover {
+    color: var(--ufc-red) !important;
+}
+
+.ufc-post-excerpt {
+    color: var(--ufc-gray-light);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 0 15px;
+    flex: 1;
+}
+
+.ufc-post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid var(--ufc-gray);
+    margin-top: auto;
+}
+
+.ufc-post-author {
+    color: var(--ufc-gray-light);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ufc-post-read {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all var(--transition-fast);
+}
+.ufc-post-read:hover {
+    color: var(--ufc-red) !important;
+}
+
+
+.ufc-cta-section {
+    background: linear-gradient(135deg, var(--ufc-red) 0%, var(--ufc-black) 60%);
+    padding: 80px 20px;
+    text-align: center;
+    border-top: 3px solid var(--ufc-gold);
+    border-bottom: 3px solid var(--ufc-gold);
+    margin: 60px 0;
+}
+
+.ufc-cta-title {
+    font-family: var(--font-title) !important;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--ufc-white-pure) !important;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.ufc-cta-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+}
+
+.ufc-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 40px;
+    background: var(--ufc-gold);
+    color: var(--ufc-black) !important;
+    font-family: var(--font-title);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    border-radius: var(--border-radius);
+    text-decoration: none !important;
+    transition: all var(--transition-normal);
+    border: 2px solid var(--ufc-gold);
+}
+.ufc-cta-btn:hover {
+    background: transparent;
+    color: var(--ufc-gold) !important;
+}
+
+
+.ufc-single-event {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.ufc-event-hero {
+    position: relative;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--ufc-dark);
+    display: flex;
+    align-items: flex-end;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+.ufc-event-hero:not([style*="background-image"]) {
+    background: linear-gradient(135deg, var(--ufc-black) 0%, rgba(210, 10, 10, 0.2) 50%, var(--ufc-dark) 100%);
+}
+.ufc-event-hero-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 100%);
+}
+.ufc-event-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    width: 100%;
+}
+.ufc-event-hero-title {
+    font-family: var(--font-title) !important;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--ufc-white-pure) !important;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+    letter-spacing: 3px;
+    line-height: 1.1;
+}
+
+.ufc-event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 40px;
+    padding: 25px;
+    background: var(--ufc-dark);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--ufc-red);
+}
+.ufc-event-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ufc-event-meta-item i {
+    color: var(--ufc-gold);
+    font-size: 1.2rem;
+    width: 20px;
+    text-align: center;
+}
+.ufc-event-meta-label {
+    font-family: var(--font-title);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--ufc-gray-light);
+    letter-spacing: 1px;
+}
+.ufc-event-meta-value {
+    font-size: 1rem;
+    color: var(--ufc-white);
+    font-weight: 500;
+}
+
+.ufc-event-content {
+    background: var(--ufc-dark);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+    border: 1px solid var(--ufc-gray);
+    line-height: 1.8;
+}
+.ufc-event-content p {
+    color: var(--ufc-white);
+    margin-bottom: 15px;
+}
+
+.ufc-event-tickets {
+    background: linear-gradient(135deg, var(--ufc-dark) 0%, rgba(210, 10, 10, 0.1) 100%);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--ufc-red);
+    margin-bottom: 30px;
+    text-align: center;
+}
+.ufc-event-tickets h3 {
+    font-family: var(--font-title) !important;
+    font-size: 1.5rem;
+    color: var(--ufc-gold) !important;
+    margin-bottom: 20px;
+}
+.ufc-event-tickets p {
+    color: var(--ufc-gray-light) !important;
+    font-size: 1rem;
+}
+.ufc-event-tickets .tribe-tickets,
+.ufc-event-tickets .tribe-tickets__form,
+.ufc-event-tickets .tribe-rsvp {
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.ufc-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+    text-decoration: none !important;
+    transition: all var(--transition-fast);
+}
+.ufc-back-link:hover {
+    color: var(--ufc-red) !important;
+}
+
+
+.ufc-footer {
+    background: var(--ufc-darker);
+    border-top: 3px solid var(--ufc-red);
+    padding: 60px 0 0;
+    margin-top: 60px;
+    position: relative;
+}
+
+.ufc-footer::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ufc-gold), transparent);
+}
+
+.ufc-footer-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding: 0 20px 40px;
+}
+
+.ufc-footer-title {
+    font-family: var(--font-title) !important;
+    font-size: 1.1rem;
+    color: var(--ufc-gold) !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--ufc-red);
+    display: inline-block;
+}
+
+.ufc-footer-col p {
+    color: var(--ufc-gray-light);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.ufc-footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+.ufc-footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--ufc-gray);
+    border-radius: 50%;
+    color: var(--ufc-white) !important;
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+}
+.ufc-footer-social a:hover {
+    background: var(--ufc-red);
+    border-color: var(--ufc-red);
+}
+
+.ufc-footer-links,
+.ufc-footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.ufc-footer-links li {
+    margin-bottom: 10px;
+}
+.ufc-footer-links a {
+    color: var(--ufc-gray-light) !important;
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.ufc-footer-links a::before {
+    content: '>';
+    color: var(--ufc-red);
+    font-weight: bold;
+}
+.ufc-footer-links a:hover {
+    color: var(--ufc-gold) !important;
+}
+
+.ufc-footer-contact li {
+    color: var(--ufc-gray-light);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ufc-footer-contact i {
+    color: var(--ufc-gold);
+    width: 16px;
+}
+
+.ufc-footer-bottom {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--ufc-gray);
+    margin-top: 20px;
+}
+.ufc-footer-bottom p {
+    color: var(--ufc-gray-light);
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.site-footer,
+footer.site-footer,
+.ast-small-footer,
+.ast-small-footer-section,
+.site-footer .ast-footer-overlay,
+.ast-footer-overlay,
+.ast-small-footer-wrap,
+.site-below-footer-wrap,
+.site-above-footer-wrap,
+.ast-footer-copyright,
+.ast-builder-footer-grid-columns,
+.site-primary-footer-wrap,
+.site-footer-primary-section-1,
+.site-footer-primary-section-2,
+footer[itemtype*="WPFooter"],
+.ast-builder-layout-element[data-section*="footer"],
+.ast-footer-row-inline,
+.ast-hfb-header .site-footer,
+[data-section="section-footer-builder"] {
+    display: none !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+}
+
+
+.ufc-animate {
+    opacity: 1;
+    transform: none;
+}
+.ufc-animate.ufc-animate-ready {
+    opacity: 0;
+    transform: translateY(20px);
+}
+.ufc-animate.ufc-animate-ready.ufc-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.ufc-animate-delay-1 { transition-delay: 0.1s; }
+.ufc-animate-delay-2 { transition-delay: 0.2s; }
+.ufc-animate-delay-3 { transition-delay: 0.3s; }
+.ufc-animate-delay-4 { transition-delay: 0.4s; }
+.ufc-animate-delay-5 { transition-delay: 0.5s; }
+
+
+.ufc-notice {
+    text-align: center;
+    color: var(--ufc-gray-light);
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    padding: 40px 20px;
+    background: var(--ufc-dark);
+    border-radius: var(--border-radius);
+    border: 1px dashed var(--ufc-gray);
+}
+
+
+.ast-separate-container .ast-article-single,
+.ast-separate-container .ast-article-post,
+.ast-separate-container .ast-comment-list li,
+.ast-separate-container .comment-respond,
+.ast-separate-container .ast-author-box,
+.ast-separate-container .ast-404-layout-1 {
+    background-color: var(--ufc-dark) !important;
+    border-radius: var(--border-radius);
+}
+
+.widget-area .widget {
+    background: var(--ufc-dark);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--ufc-gray);
+    margin-bottom: 20px;
+}
+.widget-title {
+    color: var(--ufc-gold) !important;
+    border-bottom: 2px solid var(--ufc-red);
+    padding-bottom: 10px;
+}
+
+.ast-pagination .page-numbers {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+}
+.ast-pagination .page-numbers.current,
+.ast-pagination .page-numbers:hover {
+    background: var(--ufc-red) !important;
+    border-color: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+}
+
+.ast-separate-container .ast-article-post {
+    border: 1px solid var(--ufc-gray);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+textarea,
+select {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 10px 15px !important;
+}
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--ufc-gold) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(197, 158, 94, 0.2) !important;
+}
+
+button,
+input[type="submit"],
+.ast-button,
+.button {
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+    border: none !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    border-radius: var(--border-radius) !important;
+    transition: all var(--transition-fast) !important;
+    cursor: pointer;
+}
+button:hover,
+input[type="submit"]:hover,
+.ast-button:hover,
+.button:hover {
+    background: var(--ufc-red-dark) !important;
+}
+
+.comment-body {
+    background: var(--ufc-dark) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 20px !important;
+    margin-bottom: 15px !important;
+}
+.comment-author .fn,
+.comment-author .fn a {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title);
+}
+.comment-content p {
+    color: var(--ufc-white) !important;
+}
+
+.tribe-events,
+.tribe-common {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+}
+
+.tribe-events .tribe-events-calendar-list__event-row,
+.tribe-common .tribe-common-c-loader,
+.tribe-events-single {
+    background: var(--ufc-dark) !important;
+    border-color: var(--ufc-gray) !important;
+}
+
+.tribe-events .tribe-events-calendar-list__event-title a,
+.tribe-events-single-event-title {
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+}
+
+.tribe-events .tribe-events-c-subscribe-dropdown__button,
+.tribe-events .tribe-events-c-view-selector__button {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-color: var(--ufc-gray) !important;
+}
+
+
+.um-form,
+.um .um-field-area,
+.um .um-form {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-radius: var(--border-radius) !important;
+}
+
+.um input[type="text"],
+.um input[type="email"],
+.um input[type="password"] {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    border-color: var(--ufc-gray) !important;
+}
+
+.um .um-button {
+    background: var(--ufc-red) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+}
+.um .um-button:hover {
+    background: var(--ufc-red-dark) !important;
+}
+
+
+
+.home .ast-container,
+.home #content .ast-container,
+.page-template-front-page .ast-container {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.home .entry-content,
+.home .ast-primary-entry-content,
+.home .ast-article-single,
+.home .ast-article-post,
+.home .ast-separate-container .ast-article-single {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+}
+
+.home #primary,
+.single-tribe_events #primary {
+    width: 100% !important;
+    max-width: 100% !important;
+    float: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.home #secondary,
+.single-tribe_events #secondary {
+    display: none !important;
+}
+
+.home .site-content .ast-container {
+    display: block !important;
+}
+
+
+.single-tribe_events .ast-container {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.single-tribe_events .entry-content,
+.single-tribe_events .ast-article-single {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+}
+
+
+.tribe-tickets__tickets-wrapper,
+.tribe-tickets,
+.tribe-tickets__form,
+.tribe-tickets__sale,
+.tribe-tickets__buy,
+form.tribe-tickets__form,
+.tribe-common--breakpoint-medium.tribe-tickets__form,
+.tribe-tickets-rsvp,
+#tribe-tickets,
+.cart,
+.tribe-events-tickets,
+.tribe-events-tickets-rsvp,
+.event-tickets {
+    background-color: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-radius: var(--border-radius) !important;
+}
+
+.tribe-tickets__tickets-item,
+.tribe-tickets__tickets-item-content,
+.tribe-ticket,
+.tribe-tickets-meta,
+.tribe-tickets__item {
+    background-color: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-color: var(--ufc-gray) !important;
+}
+
+.tribe-tickets__tickets-item-content-title,
+.tribe-tickets__tickets-item-extra-available,
+.tribe-ticket .ticket-name,
+.tribe-ticket .tribe-ticket-quantity,
+.tribe-tickets-meta__header,
+h4.tribe-tickets-meta__header,
+.tribe-tickets__item--content .tribe-common-h7,
+.tribe-tickets__tickets-item-content-title--desktop,
+.tribe-common-h7,
+.tribe-common-b2,
+.tribe-common-b3 {
+    color: var(--ufc-white) !important;
+}
+
+.tribe-tickets__form h4,
+.tribe-tickets__tickets-title,
+.tribe-tickets__form .tribe-common-h5,
+.tribe-tickets__form .tribe-common-h4 {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+}
+
+.tribe-tickets__tickets-item-quantity,
+.tribe-tickets__tickets-item-quantity input,
+.tribe-tickets__tickets-item-quantity .tribe-tickets__tickets-item-quantity-number-input {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    border-color: var(--ufc-gray) !important;
+}
+
+.tribe-tickets__tickets-item-quantity-remove,
+.tribe-tickets__tickets-item-quantity-add {
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+    border: none !important;
+}
+
+.tribe-tickets__buy button,
+.tribe-tickets__form .tribe-common-c-btn,
+.tribe-tickets__buy .tribe-common-c-btn,
+.tribe-tickets-buy,
+button.tribe-tickets-buy {
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    padding: 12px 30px !important;
+}
+.tribe-tickets__buy button:hover,
+.tribe-tickets__form .tribe-common-c-btn:hover,
+button.tribe-tickets-buy:hover {
+    background: var(--ufc-red-dark) !important;
+}
+
+.tribe-tickets__tickets-item-extra,
+.tribe-tickets__tickets-item-extra-available,
+.tribe-tickets__tickets-item-content-description,
+.tribe-tickets-description {
+    color: var(--ufc-gray-light) !important;
+}
+
+
+.tribe-tickets__footer,
+.tribe-tickets__tickets-footer {
+    background: var(--ufc-dark) !important;
+    border-top: 1px solid var(--ufc-gray) !important;
+    color: var(--ufc-white) !important;
+}
+
+
+.tribe-events-back a,
+.tribe-events-back a:visited,
+.tribe-events-nav-previous a,
+.tribe-events-nav-next a,
+.tribe-events-c-nav__prev a,
+.tribe-events-c-nav__next a {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+}
+.tribe-events-back a:hover,
+.tribe-events-nav-previous a:hover,
+.tribe-events-nav-next a:hover {
+    color: var(--ufc-red) !important;
+}
+
+.tribe-events-single .tribe-events-event-meta,
+.tribe-events-single .tribe-venue,
+.tribe-events-schedule,
+.tribe-events-schedule h2,
+.tribe-events-schedule .tribe-events-divider,
+.tribe-events-event-meta .tribe-events-meta-group,
+.tribe-events-content p,
+.single-tribe_events p,
+.single-tribe_events .entry-content p {
+    color: var(--ufc-white) !important;
+}
+
+.tribe-events-meta-group .tribe-events-single-section-title,
+.tribe-venue-map-header,
+.tribe-events-event-meta dt,
+.tribe-events-event-meta dd {
+    color: var(--ufc-white) !important;
+}
+.tribe-events-meta-group .tribe-events-single-section-title {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    border-bottom: 2px solid var(--ufc-red) !important;
+    padding-bottom: 8px;
+}
+
+.tribe-events .tribe-events-c-subscribe-dropdown__button {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    font-family: var(--font-title) !important;
+}
+.tribe-events-c-subscribe-dropdown__list,
+.tribe-events-c-subscribe-dropdown__list-item {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-color: var(--ufc-gray) !important;
+}
+.tribe-events-c-subscribe-dropdown__list-item a {
+    color: var(--ufc-white) !important;
+}
+.tribe-events-c-subscribe-dropdown__list-item a:hover {
+    color: var(--ufc-gold) !important;
+    background: var(--ufc-gray) !important;
+}
+
+.um,
+.um-account,
+.um-profile,
+.um-members,
+.um-directory {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 30px !important;
+    border: 1px solid var(--ufc-gray) !important;
+}
+
+.um .um-profile-header-name,
+.um .um-account-name,
+.um .um-field-label,
+.um label {
+    color: var(--ufc-white) !important;
+    font-family: var(--font-title) !important;
+}
+
+.um input[type="text"],
+.um input[type="email"],
+.um input[type="password"],
+.um input[type="tel"],
+.um input[type="url"],
+.um input[type="number"],
+.um textarea,
+.um select,
+.um .um-field-area input,
+.um .um-field-area textarea,
+.um .um-field-area select {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 10px 15px !important;
+}
+.um input:focus,
+.um textarea:focus,
+.um select:focus {
+    border-color: var(--ufc-gold) !important;
+    box-shadow: 0 0 0 2px rgba(197, 158, 94, 0.2) !important;
+}
+
+.um .um-button,
+.um input[type="submit"],
+.um .um-modal-btn,
+.um a.um-button {
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    padding: 12px 25px !important;
+    transition: all var(--transition-fast) !important;
+}
+.um .um-button:hover,
+.um input[type="submit"]:hover,
+.um a.um-button:hover {
+    background: var(--ufc-red-dark) !important;
+}
+
+.um .um-button.um-alt,
+.um a.um-link {
+    background: transparent !important;
+    color: var(--ufc-gold) !important;
+    border: 2px solid var(--ufc-gold) !important;
+}
+.um .um-button.um-alt:hover,
+.um a.um-link:hover {
+    background: var(--ufc-gold) !important;
+    color: var(--ufc-black) !important;
+}
+
+.um-account-tab,
+.um .um-account-side li,
+.um .um-account-nav li {
+    background: var(--ufc-dark) !important;
+    border-color: var(--ufc-gray) !important;
+}
+.um-account-tab a,
+.um .um-account-side li a,
+.um .um-account-nav li a {
+    color: var(--ufc-white) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+}
+.um-account-tab.um-account-tab-active,
+.um .um-account-side li.um-active,
+.um .um-account-nav li.um-active {
+    background: var(--ufc-red) !important;
+    border-color: var(--ufc-red) !important;
+}
+.um-account-tab.um-account-tab-active a,
+.um .um-account-side li.um-active a,
+.um .um-account-nav li.um-active a {
+    color: var(--ufc-white-pure) !important;
+}
+
+.um .um-profile-photo img {
+    border: 3px solid var(--ufc-gold) !important;
+    border-radius: 50%;
+}
+.um .um-cover {
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+}
+
+.um a,
+.um .um-link {
+    color: var(--ufc-gold) !important;
+}
+.um a:hover,
+.um .um-link:hover {
+    color: var(--ufc-red) !important;
+}
+
+.um .um-field-error,
+.um .um-notice {
+    border-radius: var(--border-radius) !important;
+}
+
+.um .um-field-description,
+.um .um-notice-msg,
+.um .um-account-meta {
+    color: var(--ufc-gray-light) !important;
+}
+
+
+.entry-content,
+.entry-content p,
+.entry-content li,
+.entry-content td,
+.entry-content th,
+.page-content,
+.post-content,
+.ast-article-single .entry-content {
+    color: var(--ufc-white) !important;
+}
+
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6,
+.entry-title,
+.page-title {
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+}
+
+
+.ufc-page-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+.ufc-page-title {
+    font-family: var(--font-title) !important;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ufc-gold) !important;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0 0 10px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+.ufc-page-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--ufc-red);
+}
+.ufc-page-subtitle {
+    color: var(--ufc-gray-light);
+    font-size: 1.05rem;
+    margin-top: 15px;
+}
+
+
+.ufc-blog-page {
+    background: var(--ufc-black);
+}
+
+.blog .ast-article-post,
+.blog .ast-article-single,
+.blog .ast-separate-container .ast-article-post {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.blog .ast-container,
+.blog #content .ast-container {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.blog .entry-content,
+.blog .ast-primary-entry-content,
+.blog #primary {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.blog #secondary {
+    display: none !important;
+}
+
+.ufc-blog-page .ufc-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.ufc-blog-page .ufc-post-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 420px;
+}
+.ufc-blog-page .ufc-post-image {
+    height: 200px;
+    flex-shrink: 0;
+}
+.ufc-blog-page .ufc-post-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.ufc-blog-page .ufc-post-excerpt {
+    flex: 1;
+}
+
+.ufc-pagination {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+}
+.ufc-pagination .nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.ufc-pagination .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    height: 42px;
+    padding: 8px 14px;
+    background: var(--ufc-dark);
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray);
+    border-radius: var(--border-radius);
+    font-family: var(--font-title);
+    font-size: 0.9rem;
+    text-decoration: none !important;
+    transition: all var(--transition-fast);
+}
+.ufc-pagination .page-numbers.current,
+.ufc-pagination .page-numbers:hover {
+    background: var(--ufc-red);
+    border-color: var(--ufc-red);
+    color: var(--ufc-white-pure) !important;
+}
+.ufc-pagination .prev,
+.ufc-pagination .next {
+    gap: 6px;
+    padding: 8px 18px;
+    border-color: var(--ufc-gold);
+    color: var(--ufc-gold) !important;
+}
+.ufc-pagination .prev:hover,
+.ufc-pagination .next:hover {
+    background: var(--ufc-gold);
+    color: var(--ufc-black) !important;
+}
+
+
+.ufc-events-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+.ufc-events-grid .ufc-main-event {
+    grid-column: 1 / -1;
+}
+
+.ufc-event-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+}
+.ufc-event-card .ufc-card-image {
+    height: 200px;
+    flex-shrink: 0;
+}
+.ufc-event-card .ufc-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.ufc-event-card .ufc-card-excerpt {
+    flex: 1;
+}
+
+.ufc-main-event .ufc-card-image {
+    height: 300px;
+}
+
+
+.ufc-events-page {
+    background: var(--ufc-black);
+}
+.page-template-page-evenements .ast-container,
+.page-template-page-evenements #content .ast-container {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.page-template-page-evenements .entry-content,
+.page-template-page-evenements .ast-primary-entry-content,
+.page-template-page-evenements .ast-article-single,
+.page-template-page-evenements .ast-article-post {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+.page-template-page-evenements #primary {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+
+.um .um-form,
+.um .um-field-group,
+.um .um-field-area,
+.um .um-col-alt,
+.um .um-col-alt-b {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.um {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 30px !important;
+    border: 1px solid var(--ufc-gray) !important;
+    box-shadow: none !important;
+}
+
+.page .entry-content .um,
+.page .ast-article-single .um {
+    margin: 0 !important;
+}
+
+.um-directory {
+    border: none !important;
+    box-shadow: none !important;
+}
+.um-directory .um-members-wrapper,
+.um-directory .um-member-directory-header,
+.um-directory .um-member-directory-header .um-member-directory-search-line,
+.um-directory .um-members-grid,
+.um-directory .um-members-list {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.um-directory .um-member,
+.um-members .um-member {
+    background: var(--ufc-dark) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    color: var(--ufc-white) !important;
+}
+.um-directory .um-member:hover,
+.um-members .um-member:hover {
+    border-color: var(--ufc-gold) !important;
+}
+.um-directory .um-member .um-member-name a {
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+}
+.um-directory .um-member .um-member-name a:hover {
+    color: var(--ufc-gold) !important;
+}
+
+.um-directory .um-search input,
+.um .um-search input[type="text"],
+.um-directory input[type="search"] {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+}
+
+.um-directory .um-members-none,
+.um .um-members-none {
+    color: var(--ufc-gray-light) !important;
+    text-align: center;
+    padding: 40px 20px !important;
+    font-family: var(--font-title) !important;
+    font-size: 1.1rem;
+}
+
+.um-account .um-account-main,
+.um-account .um-account-tab-content {
+    background: transparent !important;
+    border: none !important;
+}
+
+.page .ast-separate-container .ast-article-single:has(.um),
+.page .ast-separate-container .ast-article-post:has(.um) {
+    background: transparent !important;
+    border: none !important;
+    padding: 20px !important;
+}
+
+
+.single-post .ast-container {
+    max-width: var(--container-max) !important;
+}
+.single-post .ast-article-single,
+.single-post .ast-article-post {
+    background: var(--ufc-dark) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 30px !important;
+}
+
+.ufc-article-events-cta {
+    background: linear-gradient(135deg, var(--ufc-dark) 0%, rgba(210, 10, 10, 0.1) 100%);
+    border: 2px solid var(--ufc-red);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-top: 40px;
+    text-align: center;
+}
+.ufc-article-events-cta h3 {
+    font-family: var(--font-title) !important;
+    color: var(--ufc-gold) !important;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 10px;
+}
+.ufc-article-events-cta p {
+    color: var(--ufc-gray-light) !important;
+    margin: 0 0 20px;
+}
+.ufc-article-events-cta .ufc-cta-events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.ufc-article-events-cta .ufc-mini-event {
+    background: var(--ufc-dark);
+    border: 1px solid var(--ufc-gray);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    transition: all var(--transition-fast);
+}
+.ufc-article-events-cta .ufc-mini-event:hover {
+    border-color: var(--ufc-gold);
+}
+.ufc-article-events-cta .ufc-mini-event-title {
+    font-family: var(--font-title) !important;
+    color: var(--ufc-white-pure) !important;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    margin: 0 0 5px;
+}
+.ufc-article-events-cta .ufc-mini-event-date {
+    color: var(--ufc-gold);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.ufc-article-events-cta .ufc-mini-event a {
+    text-decoration: none !important;
+    display: block;
+}
+
+
+@media (max-width: 1024px) {
+    .ufc-blog-page .ufc-posts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .ufc-events-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .ufc-blog-page .ufc-posts-grid,
+    .ufc-events-grid {
+        grid-template-columns: 1fr;
+    }
+    .ufc-page-header {
+        padding: 40px 15px 30px;
+    }
+}
+
+.ast-breadcrumbs,
+.ast-breadcrumbs a,
+nav.woocommerce-breadcrumb {
+    color: var(--ufc-gray-light) !important;
+}
+.ast-breadcrumbs a:hover {
+    color: var(--ufc-gold) !important;
+}
+
+.ast-plain-container .site-content > .ast-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+.site-footer,
+footer.site-footer {
+    background: var(--ufc-darker) !important;
+}
+
+.ast-above-header-bar,
+.ast-below-header-bar {
+    background: var(--ufc-black) !important;
+}
+
+
+.entry-content a {
+    color: var(--ufc-gold) !important;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.entry-content a:hover {
+    color: var(--ufc-red) !important;
+}
+
+figcaption,
+.wp-caption-text {
+    color: var(--ufc-gray-light) !important;
+}
+
+.entry-content table,
+.entry-content th,
+.entry-content td {
+    border-color: var(--ufc-gray) !important;
+}
+.entry-content th {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-gold) !important;
+}
+
+.entry-content code,
+.entry-content pre {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-gold) !important;
+    border: 1px solid var(--ufc-gray) !important;
+}
+
+.entry-content blockquote {
+    border-left: 4px solid var(--ufc-red) !important;
+    background: var(--ufc-dark) !important;
+    padding: 20px !important;
+    color: var(--ufc-white) !important;
+}
+
+
+.ast-404-layout-1 h1,
+.error-404 h1 {
+    color: var(--ufc-red) !important;
+    font-family: var(--font-title) !important;
+}
+
+.search-form .search-field {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+}
+
+.ast-archive-description {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-bottom: 3px solid var(--ufc-red) !important;
+}
+.ast-archive-description .page-title {
+    color: var(--ufc-gold) !important;
+}
+
+
+.blog .ast-article-post,
+.blog .ast-article-single,
+.archive .ast-article-post,
+.search-results .ast-article-post,
+.ast-separate-container .ast-article-post,
+.ast-article-post,
+.ast-article-single,
+article.post,
+article.page,
+.ast-row .ast-article-post {
+    background-color: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+}
+
+.blog .entry-title a,
+.archive .entry-title a,
+.entry-title a,
+h2.entry-title a {
+    color: var(--ufc-white-pure) !important;
+    text-decoration: none !important;
+}
+.entry-title a:hover {
+    color: var(--ufc-red) !important;
+}
+
+.entry-meta,
+.entry-meta a,
+.entry-meta span,
+.ast-blog-meta-separator,
+.ast-blog-single-element .entry-meta,
+.ast-blog-single-element .entry-meta a,
+.post-meta,
+.post-meta a,
+.posted-on,
+.posted-on a,
+.byline,
+.byline a,
+.cat-links,
+.cat-links a,
+.tags-links,
+.tags-links a {
+    color: var(--ufc-gold) !important;
+}
+.entry-meta a:hover,
+.cat-links a:hover,
+.tags-links a:hover {
+    color: var(--ufc-red) !important;
+}
+
+.blog .entry-content,
+.blog .entry-content p,
+.archive .entry-content,
+.archive .entry-content p,
+.entry-summary,
+.entry-summary p,
+.ast-excerpt-container,
+.ast-excerpt-container p {
+    color: var(--ufc-white) !important;
+}
+.ast-read-more-container a,
+a.ast-button,
+.read-more,
+a.more-link {
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+    border: none !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    text-decoration: none !important;
+    display: inline-block;
+    padding: 8px 20px !important;
+    border-radius: var(--border-radius) !important;
+}
+.ast-read-more-container a:hover,
+a.ast-button:hover,
+a.more-link:hover {
+    background: var(--ufc-red-dark) !important;
+}
+
+.ast-blog-featured-section .post-thumb-img-content,
+.post-thumb-img-content {
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+}
+
+
+.page .ast-container,
+.page #content .ast-container {
+    padding: 30px 20px !important;
+}
+
+.page .entry-content,
+.page .ast-article-single,
+.page .ast-article-post {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.page .entry-title,
+.ast-single-entry-title {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--ufc-red);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+
+.tribe-events,
+.tribe-common,
+.tribe-events-view,
+.tribe-events-view--list,
+.tribe-events-l-container {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+}
+
+.tribe-events-header,
+.tribe-events .tribe-events-header,
+.tribe-events-c-top-bar,
+.tribe-events-c-events-bar,
+.tribe-events .tribe-events-c-events-bar {
+    background: var(--ufc-dark) !important;
+    border-color: var(--ufc-gray) !important;
+}
+
+.tribe-events-c-events-bar__search-input,
+.tribe-events .tribe-events-c-search__input {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    border-color: var(--ufc-gray) !important;
+}
+
+.tribe-events-calendar-list__event-row,
+.tribe-events .tribe-events-calendar-list__event-row,
+.tribe-events-calendar-list__event,
+.tribe-common-g-row {
+    background: var(--ufc-dark) !important;
+    border-color: var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    margin-bottom: 15px !important;
+}
+
+.tribe-events-calendar-list__event-date-tag,
+.tribe-events-calendar-list__event-date-tag-weekday,
+.tribe-events-calendar-list__event-date-tag-daynum,
+.tribe-events-calendar-list__month-separator-text,
+.tribe-events .tribe-events-calendar-list__month-separator-text {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+}
+
+.tribe-events-calendar-list__month-separator {
+    background: var(--ufc-dark) !important;
+    border-color: var(--ufc-gray) !important;
+}
+
+.tribe-events-calendar-list__event-title a,
+.tribe-events-calendar-list__event-title,
+.tribe-common .tribe-common-h6 a,
+.tribe-common .tribe-common-h5 a,
+.tribe-common .tribe-common-h4 a,
+.tribe-common .tribe-common-h3 a,
+.tribe-common .tribe-common-h2 a,
+.tribe-common .tribe-common-h6,
+.tribe-common .tribe-common-h5,
+.tribe-common .tribe-common-h4 {
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+}
+.tribe-events-calendar-list__event-title a:hover {
+    color: var(--ufc-red) !important;
+}
+
+.tribe-events-calendar-list__event-venue,
+.tribe-events-calendar-list__event-datetime,
+.tribe-common .tribe-common-b2,
+.tribe-common .tribe-common-b3,
+.tribe-common .tribe-common-b1 {
+    color: var(--ufc-gray-light) !important;
+}
+
+.tribe-events-calendar-list__event-featured-image-link img {
+    border-radius: var(--border-radius) !important;
+}
+
+.tribe-events-c-nav__prev a,
+.tribe-events-c-nav__next a,
+.tribe-events-c-nav__list-item a {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+}
+.tribe-events-c-nav__prev a:hover,
+.tribe-events-c-nav__next a:hover {
+    color: var(--ufc-red) !important;
+}
+
+.tribe-events-c-view-selector,
+.tribe-events-c-view-selector__button,
+.tribe-events-c-view-selector__list-item a,
+.tribe-events-c-view-selector__list-item button {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-color: var(--ufc-gray) !important;
+}
+.tribe-events-c-view-selector__list-item--active a,
+.tribe-events-c-view-selector__list-item--active button {
+    color: var(--ufc-red) !important;
+}
+
+.tribe-events-c-subscribe-dropdown__button,
+.tribe-events .tribe-events-c-subscribe-dropdown__button {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-color: var(--ufc-gray) !important;
+}
+
+.tribe-events-c-messages,
+.tribe-events-c-messages__message {
+    color: var(--ufc-gray-light) !important;
+    background: var(--ufc-dark) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 30px !important;
+    text-align: center;
+}
+
+.tribe-common-c-loader {
+    background: var(--ufc-dark) !important;
+}
+
+.tribe-common .tribe-common-c-svgicon {
+    color: var(--ufc-gold) !important;
+}
+
+
+
+.ufc-contact-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .ufc-contact-page {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ufc-contact-info h2,
+.ufc-contact-form-wrap h2 {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--ufc-red);
+}
+
+.ufc-contact-info p,
+.ufc-contact-info li {
+    color: var(--ufc-white) !important;
+    line-height: 1.8;
+}
+
+.ufc-contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.ufc-contact-info ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--ufc-gray);
+}
+
+.ufc-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ufc-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ufc-form-group label {
+    color: var(--ufc-white) !important;
+    font-family: var(--font-title);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ufc-contact-form input,
+.ufc-contact-form textarea {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 12px 15px !important;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+}
+
+.ufc-contact-form input:focus,
+.ufc-contact-form textarea:focus {
+    border-color: var(--ufc-gold) !important;
+    outline: none;
+}
+
+.ufc-contact-submit {
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+    border: none !important;
+    padding: 14px 30px !important;
+    font-family: var(--font-title) !important;
+    font-size: 1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    border-radius: var(--border-radius) !important;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.ufc-contact-submit:hover {
+    background: var(--ufc-red-dark) !important;
+}
+
+.ufc-contact-success {
+    background: rgba(40, 167, 69, 0.15);
+    border: 1px solid #28a745;
+    color: #28a745 !important;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.ufc-contact-error {
+    background: rgba(210, 10, 10, 0.15);
+    border: 1px solid var(--ufc-red);
+    color: var(--ufc-red) !important;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+
+.page-template-default .entry-content .um,
+.page .entry-content .um {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+}
+
+.um *,
+.um p,
+.um span,
+.um div,
+.um label,
+.um .um-field-label-text {
+    color: var(--ufc-white) !important;
+}
+
+.um input::placeholder,
+.um textarea::placeholder {
+    color: var(--ufc-gray-light) !important;
+}
+
+.um .um-col-alt a,
+.um .um-col-alt-b a,
+.um .um-forgot-pass-link a,
+.um .um-register-link a {
+    color: var(--ufc-gold) !important;
+}
+.um .um-col-alt a:hover,
+.um .um-forgot-pass-link a:hover {
+    color: var(--ufc-red) !important;
+}
+
+.um-account .um-account-tab {
+    background: var(--ufc-dark) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    margin-bottom: 5px;
+}
+.um-account .um-account-tab a {
+    color: var(--ufc-white) !important;
+    padding: 12px 20px !important;
+    display: block;
+}
+.um-account .um-account-tab.um-account-tab-active {
+    background: var(--ufc-red) !important;
+    border-color: var(--ufc-red) !important;
+}
+.um-account .um-account-tab.um-account-tab-active a {
+    color: var(--ufc-white-pure) !important;
+}
+
+.um-account-main,
+.um-account-section {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+}
+
+.um-directory .um-members {
+    background: transparent !important;
+}
+.um-directory .um-member {
+    background: var(--ufc-dark) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+}
+.um-directory .um-member-name a {
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+}
+.um-directory .um-member-name a:hover {
+    color: var(--ufc-red) !important;
+}
+
+
+#page,
+#content,
+.site-content,
+.ast-container,
+.ast-separate-container,
+#primary,
+#secondary,
+main,
+.site-main {
+    background-color: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+}
+
+.ast-plain-container .site-content > .ast-container,
+.ast-plain-container #primary {
+    background: var(--ufc-black) !important;
+}
+
+.ast-separate-container .ast-article-single,
+.ast-separate-container .ast-article-post,
+.ast-plain-container .ast-article-single,
+.ast-plain-container .ast-article-post {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 30px !important;
+    margin-bottom: 20px;
+}
+
+.page .ast-article-single,
+.page .ast-article-post {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* Titre de page dans Astra */
+.ast-single-post-title,
+.ast-single-entry-title,
+.entry-title {
+    color: var(--ufc-white-pure) !important;
+}
+
+/* Navigation entre articles (suivant/précédent) */
+.ast-single-post-navigation a,
+.post-navigation a,
+.nav-links a {
+    color: var(--ufc-gold) !important;
+}
+.ast-single-post-navigation a:hover,
+.post-navigation a:hover {
+    color: var(--ufc-red) !important;
+}
+
+/* Author box Astra */
+.ast-author-box {
+    background: var(--ufc-dark) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+}
+.ast-author-box .ast-author-bio,
+.ast-author-box .author-title {
+    color: var(--ufc-white) !important;
+}
+
+/* Single article page — contenu */
+.single .entry-content,
+.single .entry-content p,
+.single .entry-content li,
+.single .entry-content h1,
+.single .entry-content h2,
+.single .entry-content h3,
+.single .entry-content h4 {
+    color: var(--ufc-white) !important;
+}
+
+/* Fix le heading Événements en haut à gauche sans padding */
+.tribe-events-page-title,
+.tribe-events .tribe-events-header__title,
+.tribe-events-header__title {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    padding: 0 20px !important;
+}
+
+/* Fix liens globaux Astra couleur par défaut */
+.ast-single-post .entry-content a,
+.ast-single-post .entry-content a:visited {
+    color: var(--ufc-gold) !important;
+}
+.ast-single-post .entry-content a:hover {
+    color: var(--ufc-red) !important;
+}
+
+/* =========================================================================
+ * 34. FIX GAP À DROITE — PAGES BLOG & ÉVÉNEMENTS
+ * =========================================================================
+ * J'ai codé ici : Astra ajoute du padding asymétrique via ses conteneurs.
+ * On force pleine largeur sur nos pages custom et on centre le contenu.
+ */
+
+/* Pages blog et événements — supprimer TOUT le padding Astra */
+.ufc-blog-page,
+.ufc-events-page {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* Le conteneur Astra autour de notre template — aucun padding */
+.blog .site-content > .ast-container,
+.blog .site-main,
+.blog #primary,
+.blog main,
+.page-template-page-evenements .site-content > .ast-container,
+.page-template-page-evenements .site-main,
+.page-template-page-evenements #primary,
+.page-template-page-evenements main {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    float: none !important;
+}
+
+/* .ufc-section centrée correctement */
+.ufc-blog-page .ufc-section,
+.ufc-events-page .ufc-section {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+/* Page header centré */
+.ufc-blog-page .ufc-page-header,
+.ufc-events-page .ufc-page-header {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* =========================================================================
+ * 35. CACHER LES COMMENTAIRES SUR LES ARTICLES
+ * =========================================================================
+ * J'ai codé ici : On masque la section commentaires par défaut.
+ */
+.comments-area,
+#comments,
+.ast-comment-list,
+.comment-respond,
+.ast-comments-area-outer {
+    display: none !important;
+}
+
+/* =========================================================================
+ * 36. MEMBRES — FIX COMPLET UM DIRECTORY
+ * =========================================================================
+ * J'ai codé ici : La page Membres UM — nettoyage des borders,
+ * centrage du contenu, message stylé.
+ */
+
+/* Le conteneur UM directory — un seul cadre */
+.um-directory,
+.page .entry-content .um-directory {
+    background: var(--ufc-dark) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 30px !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+}
+
+/* Supprimer les borders sur tous les éléments internes */
+.um-directory *:not(.um-member):not(.um-member-name):not(a):not(img):not(input):not(button) {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Barre de recherche membres */
+.um-directory .um-search-filter,
+.um-directory .um-member-directory-header {
+    background: transparent !important;
+    padding: 0 0 20px !important;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--ufc-gray) !important;
+}
+
+/* Message "aucun membre" — centré et stylé */
+.um-directory .um-members-none,
+.um-directory .um-no-members {
+    text-align: center !important;
+    padding: 60px 20px !important;
+    color: var(--ufc-gray-light) !important;
+    font-family: var(--font-title) !important;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+/* Page membres — pleine largeur */
+.page .ast-container:has(.um-directory) {
+    max-width: var(--container-max) !important;
+    margin: 0 auto !important;
+    padding: 30px 20px !important;
+}
+
+/* =========================================================================
+ * 37. SINGLE EVENT — SECTION TICKETS AMÉLIORÉE
+ * =========================================================================
+ * J'ai codé ici : Améliorations pour la section tickets/RSVP
+ * sur la page détail événement.
+ */
+
+/* Le bouton "Ajouter au calendrier" de TEC — le styler correctement */
+.tribe-events .tribe-events-c-subscribe-dropdown {
+    margin-top: 20px;
+}
+.tribe-events .tribe-events-c-subscribe-dropdown__button {
+    background: var(--ufc-gold) !important;
+    color: var(--ufc-black) !important;
+    border: none !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+    padding: 10px 20px !important;
+    border-radius: var(--border-radius) !important;
+}
+.tribe-events .tribe-events-c-subscribe-dropdown__button:hover {
+    background: var(--ufc-gold-dark) !important;
+}
+
+/* Dropdown du calendrier */
+.tribe-events-c-subscribe-dropdown__content,
+.tribe-events-c-subscribe-dropdown__list {
+    background: var(--ufc-dark) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+}
+.tribe-events-c-subscribe-dropdown__list-item a {
+    color: var(--ufc-white) !important;
+    padding: 10px 15px !important;
+}
+.tribe-events-c-subscribe-dropdown__list-item a:hover {
+    background: var(--ufc-gray) !important;
+    color: var(--ufc-gold) !important;
+}
+
+/* =========================================================================
+ * 38. EVENT TICKETS RSVP — DARK MODE COMPLET
+ * =========================================================================
+ * J'ai codé ici : Le formulaire RSVP et les pages de confirmation
+ * Event Tickets ont des fonds BLANCS par défaut. On force tout en dark.
+ */
+
+/* --- Formulaire RSVP dans la page événement --- */
+.tribe-tickets__rsvp,
+.tribe-tickets__rsvp-wrapper,
+.tribe-tickets__rsvp-form,
+.tribe-tickets-rsvp,
+.tribe-rsvp,
+.tribe-tickets__form,
+.tribe-tickets,
+.tribe-tickets__tickets-wrapper,
+.ufc-rsvp-form-wrapper,
+.ufc-rsvp-form-wrapper > div {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+}
+
+/* Le conteneur du formulaire RSVP (le bloc blanc) */
+.tribe-tickets__rsvp-form-wrapper,
+.tribe-tickets__rsvp-form-content,
+.tribe-tickets__rsvp-form-fields,
+.tribe-tickets__form--rsvp,
+.tribe-tickets__attendee-tickets-form,
+.tribe-tickets__attendee-tickets-container,
+.tribe-tickets-attendee-form,
+.tribe-rsvp__form,
+.tribe-tickets__rsvp .tribe-common,
+.tribe-tickets__rsvp .tribe-tickets__form,
+.tribe-tickets__rsvp-ar,
+.tribe-tickets__rsvp-actions-form,
+.tribe-tickets__rsvp-actions-form-wrapper {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border: none !important;
+}
+
+/* Le modal/popup RSVP — fond sombre */
+.tribe-tickets__rsvp-ar-form,
+.tribe-tickets__rsvp-ar-form-wrapper,
+.tribe-modal__dialog,
+.tribe-modal__content,
+.tribe-dialog__content,
+.tribe-tickets-modal,
+.tribe-tickets__form-field,
+.tribe-tickets__form-field-input,
+.tribe-tickets__attendee-tickets-item,
+.tribe-tickets__rsvp-ar-quantity,
+form[class*="tribe-tickets"],
+div[class*="tribe-tickets__rsvp"] {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+}
+
+/* Header du RSVP */
+.tribe-tickets__rsvp-title,
+.tribe-tickets__rsvp-description,
+.tribe-tickets__rsvp-availability,
+.tribe-tickets__rsvp .tribe-common-h5,
+.tribe-tickets__rsvp .tribe-common-h6,
+.tribe-tickets__rsvp .tribe-common-h7,
+.tribe-tickets__rsvp .tribe-common-b1,
+.tribe-tickets__rsvp .tribe-common-b2,
+.tribe-tickets__rsvp .tribe-common-b3 {
+    color: var(--ufc-white) !important;
+}
+
+/* Labels des champs RSVP */
+.tribe-tickets__form-field-label,
+.tribe-tickets__rsvp-ar-form label,
+.tribe-tickets__form label,
+.tribe-tickets label,
+.tribe-tickets .tribe-common-b2--bold,
+.tribe-tickets .tribe-field-label {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+    font-size: 0.85rem !important;
+}
+
+/* Champs de saisie RSVP */
+.tribe-tickets__form-field-input input,
+.tribe-tickets__rsvp-ar-form input,
+.tribe-tickets__form input[type="text"],
+.tribe-tickets__form input[type="email"],
+.tribe-tickets__form input[type="number"],
+.tribe-tickets__form input[type="tel"],
+.tribe-tickets__form select,
+.tribe-tickets__form textarea,
+.tribe-tickets input[type="text"],
+.tribe-tickets input[type="email"],
+.tribe-tickets input[type="number"],
+.tribe-tickets input[type="tel"],
+.tribe-tickets select,
+.tribe-tickets textarea,
+.tribe-tickets__rsvp-ar-quantity-input {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 10px 15px !important;
+}
+.tribe-tickets__form input:focus,
+.tribe-tickets input:focus,
+.tribe-tickets__form select:focus {
+    border-color: var(--ufc-gold) !important;
+    box-shadow: 0 0 0 2px rgba(197, 158, 94, 0.2) !important;
+    outline: none !important;
+}
+
+/* Bouton RSVP "Terminer" / "Submit" */
+.tribe-tickets__rsvp-actions-button-going,
+.tribe-tickets__rsvp-form-button,
+.tribe-tickets__rsvp-ar-form button[type="submit"],
+.tribe-tickets__form button[type="submit"],
+.tribe-tickets__buy button,
+.tribe-tickets__form .tribe-common-c-btn,
+.tribe-tickets .tribe-common-c-btn,
+button.tribe-tickets-buy,
+.tribe-tickets__rsvp-actions-success-going-button,
+button.tribe-tickets__rsvp-ar-form-submit {
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-weight: 600 !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    padding: 14px 30px !important;
+    font-size: 0.9rem !important;
+    cursor: pointer;
+    transition: background var(--transition-fast) !important;
+}
+.tribe-tickets__rsvp-actions-button-going:hover,
+.tribe-tickets__rsvp-form-button:hover,
+.tribe-tickets__form button[type="submit"]:hover,
+button.tribe-tickets-buy:hover,
+.tribe-tickets .tribe-common-c-btn:hover {
+    background: var(--ufc-red-dark) !important;
+}
+
+/* Bouton "Annuler" */
+.tribe-tickets__rsvp-ar-form-cancel,
+.tribe-tickets__rsvp-actions-button-not-going,
+.tribe-tickets__form-cancel,
+a.tribe-tickets__rsvp-ar-form-cancel {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+    text-decoration: none !important;
+    transition: color var(--transition-fast);
+}
+.tribe-tickets__rsvp-ar-form-cancel:hover,
+a.tribe-tickets__rsvp-ar-form-cancel:hover {
+    color: var(--ufc-red) !important;
+}
+
+/* Compteur de quantité RSVP */
+.tribe-tickets__rsvp-ar-quantity,
+.tribe-tickets__rsvp-ar-quantity-input,
+.tribe-tickets__item__quantity,
+.tribe-tickets__item__quantity input {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    border-color: var(--ufc-gray) !important;
+}
+
+/* Boutons +/- quantité */
+.tribe-tickets__item__quantity__minus,
+.tribe-tickets__item__quantity__plus,
+.tribe-tickets__rsvp-ar-quantity-minus,
+.tribe-tickets__rsvp-ar-quantity-plus {
+    background: var(--ufc-gray) !important;
+    color: var(--ufc-white) !important;
+    border: none !important;
+}
+.tribe-tickets__item__quantity__minus:hover,
+.tribe-tickets__item__quantity__plus:hover {
+    background: var(--ufc-red) !important;
+}
+
+/* Message de succès RSVP */
+.tribe-tickets__rsvp-actions-success,
+.tribe-tickets__rsvp-message--success,
+.tribe-tickets-notice--success {
+    background: rgba(40, 167, 69, 0.15) !important;
+    border: 1px solid #28a745 !important;
+    color: #28a745 !important;
+    border-radius: var(--border-radius) !important;
+    padding: 15px !important;
+}
+
+/* Nombre de places restantes */
+.tribe-tickets__rsvp-availability-count,
+.tribe-tickets__item__extra__available,
+.tribe-tickets__tickets-item-extra-available {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+}
+
+/* =========================================================================
+ * 39. PAGE CONFIRMATION / CHECKOUT TICKETS — DARK MODE
+ * =========================================================================
+ * J'ai codé ici : Les pages de commande et confirmation Event Tickets
+ * ont des fonds blancs par défaut. On force le dark mode complet.
+ */
+
+/* Page checkout */
+.tec-tickets__commerce-checkout,
+.tribe-tickets__commerce-checkout,
+.tribe-tickets__checkout,
+.tec-tickets-commerce,
+[class*="tec-tickets"] {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+}
+
+/* Page de succès / confirmation */
+.tec-tickets__commerce-success,
+.tribe-tickets__commerce-success,
+.tribe-tickets__success,
+.tribe-tickets__confirmation,
+.tribe-tickets-confirmation {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+}
+
+/* Les blocs de détails de réservation (fond blanc → sombre) */
+.tribe-tickets__attendee-tickets-item,
+.tribe-tickets__attendee-tickets-container,
+.tribe-tickets__attendees-list-item,
+.tribe-tickets__confirmation-details,
+.tribe-tickets__order,
+.tribe-tickets__order-details,
+.tec-tickets__attendee,
+.tec-tickets__attendee-details,
+.tec-tickets-seating,
+div[class*="tribe-tickets__attendee"],
+div[class*="tec-tickets__attendee"],
+div[class*="tribe-tickets__confirmation"],
+div[class*="tribe-tickets__order"] {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 20px !important;
+    margin-bottom: 15px !important;
+}
+
+/* Titres dans les pages tickets */
+.tec-tickets__commerce-checkout h1,
+.tec-tickets__commerce-checkout h2,
+.tec-tickets__commerce-checkout h3,
+.tec-tickets__commerce-success h1,
+.tec-tickets__commerce-success h2,
+.tec-tickets__commerce-success h3,
+.tribe-tickets__confirmation h2,
+.tribe-tickets__confirmation h3 {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+}
+
+/* Texte dans les pages tickets */
+.tec-tickets__commerce-checkout p,
+.tec-tickets__commerce-checkout span,
+.tec-tickets__commerce-checkout label,
+.tec-tickets__commerce-checkout div,
+.tec-tickets__commerce-success p,
+.tec-tickets__commerce-success span,
+.tec-tickets__commerce-success label,
+.tec-tickets__commerce-success div,
+.tribe-tickets__confirmation p,
+.tribe-tickets__confirmation span {
+    color: var(--ufc-white) !important;
+}
+
+/* Le "Participant 1" et infos (texte gris illisible) */
+.tribe-tickets__attendee-tickets-item h4,
+.tribe-tickets__attendee-tickets-item .tribe-common-h7,
+.tribe-tickets__attendee-tickets-item label {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+}
+.tribe-tickets__attendee-tickets-item p,
+.tribe-tickets__attendee-tickets-item span,
+.tribe-tickets__attendee-tickets-item div {
+    color: var(--ufc-white) !important;
+}
+
+/* Badge "Participer" (select/dropdown) dans la confirmation */
+.tribe-tickets__attendee-tickets-item select,
+.tribe-tickets__confirmation select {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 8px 12px !important;
+}
+
+/* Bouton "Mettre à jour réservation" */
+.tribe-tickets__rsvp-form-button-update,
+.tribe-tickets__attendee-tickets-submit,
+button[name="process-rsvp"],
+.tribe-tickets__form input[type="submit"],
+input[name="attendee-update"] {
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    padding: 14px 30px !important;
+}
+
+/* Info "Réservé par..." */
+.tribe-tickets__attendee-tickets-header,
+.tribe-tickets__rsvp-message,
+.tribe-tickets-order-header {
+    color: var(--ufc-gray-light) !important;
+    font-size: 0.9rem;
+    padding: 10px 0 !important;
+    border-bottom: 1px solid var(--ufc-gray) !important;
+    margin-bottom: 15px !important;
+}
+
+/* Lien "Voir Événement" */
+.tribe-tickets__attendee-tickets-header a,
+.tribe-events-back a {
+    color: var(--ufc-gold) !important;
+}
+
+/* Type de ticket dans la confirmation */
+.tribe-tickets__attendee-tickets-item .tribe-common-b3,
+.tribe-tickets__attendee-tickets-item small {
+    color: var(--ufc-gray-light) !important;
+    font-size: 0.85rem;
+}
+
+/* Fix global : tout élément Event Tickets avec fond blanc */
+[class*="tribe-tickets"] {
+    color: var(--ufc-white);
+}
+[class*="tribe-tickets"][style*="background"] {
+    background: var(--ufc-dark) !important;
+}
+
+/* RSVP wrapper dans notre section ufc-event-tickets — fond transparent, pas de boîte */
+.ufc-event-tickets [class*="tribe-tickets"],
+.ufc-event-tickets [class*="tribe-rsvp"],
+.ufc-event-tickets form {
+    background: transparent !important;
+    color: var(--ufc-white) !important;
+    border: none !important;
+}
+
+/* Fix le formulaire RSVP injecté par the_content() */
+.entry-content .tribe-tickets__rsvp,
+.entry-content .tribe-tickets,
+.entry-content [class*="tribe-tickets"] {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 20px !important;
+    margin-top: 20px !important;
+}
+
+/* Manuel RSVP — notre fallback custom */
+.ufc-rsvp-manual {
+    background: var(--ufc-dark);
+    border: 1px solid var(--ufc-gray);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    text-align: center;
+}
+.ufc-rsvp-manual .ufc-rsvp-name {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    color: var(--ufc-white-pure);
+    margin-bottom: 10px;
+}
+.ufc-rsvp-manual .ufc-rsvp-desc {
+    color: var(--ufc-gray-light);
+    margin-bottom: 10px;
+}
+.ufc-rsvp-manual .ufc-rsvp-remaining {
+    color: var(--ufc-gold);
+    font-family: var(--font-title);
+    font-size: 0.95rem;
+}
+
+/* =========================================================================
+ * 40. EVENT TICKETS — PAGES TICKETS/ATTENDEE DARK MODE NUCLEAR
+ * =========================================================================
+ * J'ai codé ici : Override nucléaire pour TOUTES les pages Event Tickets.
+ * On cible /event/.../tickets/ (page attendee), la confirmation,
+ * et tous les formulaires RSVP. AUCUN fond blanc ne doit subsister.
+ */
+
+/* --- NUCLEAR: Tout élément dans les pages tickets → fond sombre --- */
+.tribe-tickets-registration,
+.tribe-tickets-registration *,
+.tribe_events_single_section,
+.tribe-rsvp-message-confirmation,
+.tribe-rsvp-actions,
+.tribe-rsvp-wrapper,
+.tribe-tickets__rsvp-wrapper {
+    background-color: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+}
+
+/* Page /event/xxx/tickets/ — le conteneur principal */
+.tribe-events-tickets .tribe-tickets__attendee-tickets-container,
+.tribe-events-tickets,
+.tribe_events_single_section.tribe-events-event-meta.secondary,
+.tribe-tickets__attendees,
+.tribe-tickets__attendees-list,
+.tribe-link-view-attendee,
+#tribe-events-content {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+}
+
+/* Les cartes participant (Participant 1, 2...) — FOND BLANC → SOMBRE */
+.tribe-tickets__attendee-tickets-item,
+.tribe-tickets__attendee-tickets-item *,
+.tribe-tickets__attendee-tickets-form,
+.tribe-tickets__attendee-tickets-form *,
+li.tribe-tickets__attendees-list-item,
+li.tribe-tickets__attendees-list-item *,
+.tribe-ticket-information,
+.tribe-ticket-information * {
+    background-color: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-color: var(--ufc-gray) !important;
+}
+
+/* Supprimer les borders imbriquées moches */
+.tribe-tickets__attendee-tickets-item,
+li.tribe-tickets__attendees-list-item {
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 20px !important;
+    margin-bottom: 15px !important;
+}
+.tribe-tickets__attendee-tickets-item *,
+li.tribe-tickets__attendees-list-item * {
+    border: none !important;
+}
+
+/* Remettre les borders sur les inputs/selects uniquement */
+.tribe-tickets__attendee-tickets-item input,
+.tribe-tickets__attendee-tickets-item select,
+.tribe-tickets__attendee-tickets-item textarea {
+    border: 1px solid var(--ufc-gray) !important;
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 8px 12px !important;
+}
+
+/* Textes dans les cartes participant */
+.tribe-tickets__attendee-tickets-item h4,
+.tribe-tickets__attendee-tickets-item .tribe-common-h7 {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 10px !important;
+}
+.tribe-tickets__attendee-tickets-item label {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 1px;
+}
+.tribe-tickets__attendee-tickets-item p,
+.tribe-tickets__attendee-tickets-item span,
+.tribe-tickets__attendee-tickets-item div,
+.tribe-tickets__attendee-tickets-item small {
+    color: var(--ufc-gray-light) !important;
+}
+
+/* --- "Vos Réservations" — stylé via FIX 9 plus bas, on garde juste la couleur texte --- */
+.tribe-tickets__rsvp-ar,
+.tribe-tickets__rsvp-ar *,
+.tribe-rsvp-list,
+.tribe-rsvp-list *,
+.tribe-tickets__rsvp-ar-sidebar,
+.tribe-tickets__rsvp-ar-sidebar * {
+    color: var(--ufc-white) !important;
+}
+
+/* --- Message succès "Votre Réservation a été reçu !" --- */
+.tribe-tickets-notice,
+.tribe-tickets-notice--success,
+.tribe-rsvp-message-confirmation {
+    background: rgba(40, 167, 69, 0.15) !important;
+    border: 1px solid #28a745 !important;
+    color: #28a745 !important;
+    border-radius: var(--border-radius) !important;
+    padding: 15px 20px !important;
+    margin-bottom: 20px !important;
+    font-family: var(--font-title) !important;
+}
+.tribe-tickets-notice a,
+.tribe-tickets-notice--success a {
+    color: #28a745 !important;
+    text-decoration: underline !important;
+}
+
+/* --- Section header "Réservé par aurelien..." --- */
+.tribe-events-tickets-attendees header,
+.tribe-ticket-order-details,
+.tribe-events-tickets header {
+    background: var(--ufc-dark) !important;
+    color: var(--ufc-gray-light) !important;
+    padding: 15px !important;
+    border-bottom: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+}
+
+/* --- Titre "Réservations" / "Vos Réservations" --- */
+.tribe-events-tickets-attendees h2,
+.tribe-events-tickets h2,
+.tribe-tickets__rsvp h3,
+.tribe-tickets__rsvp-ar h3 {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px;
+    margin-bottom: 20px !important;
+}
+
+/* --- Badge "Sera Présent" / "Participe" --- */
+.tribe-tickets__rsvp-ar-sidebar-card-status,
+.tribe-tickets__rsvp-actions-success-going-text,
+span[class*="going"],
+span[class*="status"] {
+    color: #28a745 !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* --- Compteur participants --- */
+.tribe-tickets__rsvp-ar-quantity-display,
+.tribe-tickets__rsvp .tribe-common-h4,
+.tribe-tickets__rsvp .tribe-common-h3 {
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+}
+
+/* --- Page /event/.../tickets/ — conteneur Astra pleine largeur sombre --- */
+.single-tribe_events .tribe-tickets-registration .ast-container,
+.single-tribe_events .tribe-events-tickets .ast-container {
+    max-width: var(--container-max) !important;
+    margin: 0 auto !important;
+    padding: 30px 20px !important;
+    background: var(--ufc-black) !important;
+}
+
+/* --- NUCLEAR: Tout fond blanc restant → sombre --- */
+.tribe-events-single .entry-content > div,
+.tribe-events-single .entry-content > section,
+.tribe-events-single .entry-content form,
+.single-tribe_events .entry-content > div,
+.single-tribe_events .entry-content > section {
+    background-color: var(--ufc-dark) !important;
+    color: var(--ufc-white) !important;
+    border-radius: var(--border-radius) !important;
+}
+
+/* Supprimer la border dashed autour de notre section tickets */
+.ufc-event-tickets {
+    border: 2px solid var(--ufc-red) !important;
+    border-style: solid !important;
+}
+
+/* =========================================================================
+ * 41. NETTOYAGE GLOBAL — SUPPRESSION DES BORDERS IMBRIQUÉES
+ * =========================================================================
+ * J'ai codé ici : Astra wrape le contenu dans plusieurs couches de divs
+ * (.ast-article-single > .entry-content > ...) qui ajoutent chacune
+ * des borders/paddings. On nettoie TOUT pour un rendu propre.
+ */
+
+/* --- Single Event — supprimer TOUTES les couches Astra --- */
+.single-tribe_events .ast-article-single,
+.single-tribe_events .ast-article-post,
+.single-tribe_events .ast-separate-container .ast-article-single,
+.single-tribe_events .ast-separate-container .ast-article-post,
+.single-tribe_events .ast-plain-container .ast-article-single {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.single-tribe_events .entry-content {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.single-tribe_events .site-content > .ast-container,
+.single-tribe_events .ast-container {
+    background: var(--ufc-black) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* --- Pages génériques — nettoyer les couches Astra --- */
+.page .ast-article-single,
+.page .ast-article-post,
+.page .ast-separate-container .ast-article-single,
+.page .ast-plain-container .ast-article-single {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 20px !important;
+    margin: 0 !important;
+}
+
+/* --- Page événements (liste) --- */
+.page-template-page-evenements .ast-article-single,
+.page-template-page-evenements .ast-article-post {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* --- Supprimer les borders/outlines sur les conteneurs Astra --- */
+.ast-article-single,
+.ast-article-post,
+.ast-separate-container .ast-article-single,
+.ast-separate-container .ast-article-post {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* --- Single post (articles) — un seul cadre propre --- */
+.single-post .ast-article-single,
+.single-post .ast-article-post {
+    background: var(--ufc-dark) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 30px !important;
+    box-shadow: none !important;
+}
+/* Pas de border sur le entry-content à l'intérieur */
+.single-post .ast-article-single .entry-content,
+.single-post .ast-article-post .entry-content {
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+/* --- Pages avec UM — un seul cadre sur le .um --- */
+.page .ast-article-single:has(.um),
+.page .ast-article-post:has(.um) {
+    background: transparent !important;
+    border: none !important;
+    padding: 20px !important;
+}
+
+/* --- Page contact --- */
+.page-template-default .ast-article-single .ufc-contact-page,
+.page .ast-article-single .ufc-contact-page {
+    border: none !important;
+    background: transparent !important;
+}
+
+/* --- Tribe Events — supprimer les conteneurs inutiles --- */
+.tribe-events-single,
+.tribe-events-single > div,
+#tribe-events-content,
+.tribe-events-content {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Notre template custom — déjà stylé, pas besoin de borders Astra */
+.ufc-single-event > * {
+    /* Chaque section a déjà son propre style */
+}
+
+/* La section tickets — un seul cadre rouge */
+.ufc-event-tickets {
+    background: linear-gradient(135deg, var(--ufc-dark) 0%, rgba(210, 10, 10, 0.1) 100%) !important;
+    padding: 30px !important;
+    border-radius: var(--border-radius) !important;
+    border: 2px solid var(--ufc-red) !important;
+}
+/* Pas de border sur les éléments enfants */
+.ufc-event-tickets > div,
+.ufc-event-tickets > form,
+.ufc-event-tickets > section {
+    border: none !important;
+    background: transparent !important;
+}
+
+/* --- Fix global : Astra .ast-container sur toutes les pages --- */
+#page > .ast-container,
+.site-content > .ast-container,
+#content > .ast-container {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* =========================================================================
+ * 40. SYSTÈME DE RÉSERVATION PAR CATÉGORIE (OR / ARGENT / BRONZE)
+ * =========================================================================
+ * J'ai codé ici : Grille de 3 cartes pour les catégories de places.
+ * Barre de remplissage, formulaire de réservation, messages.
+ */
+
+/* Grille des tiers */
+.ufc-tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.ufc-tier-card {
+    background: var(--ufc-black);
+    border: 2px solid var(--ufc-gray);
+    border-radius: var(--border-radius);
+    padding: 25px 20px;
+    text-align: center;
+    transition: border-color var(--transition-fast);
+    cursor: default;
+}
+.ufc-tier-card:hover {
+    border-color: var(--tier-color, var(--ufc-gold));
+}
+
+.ufc-tier-icon {
+    font-size: 2rem;
+    color: var(--tier-color, var(--ufc-gold));
+    margin-bottom: 12px;
+}
+
+.ufc-tier-label {
+    font-family: var(--font-title) !important;
+    font-size: 1rem;
+    color: var(--tier-color, var(--ufc-gold)) !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 8px;
+}
+
+.ufc-tier-desc {
+    color: var(--ufc-gray-light);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0 0 15px;
+}
+
+.ufc-tier-capacity {
+    margin-top: auto;
+}
+
+.ufc-tier-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--ufc-gray);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.ufc-tier-bar-fill {
+    height: 100%;
+    background: var(--tier-color, var(--ufc-gold));
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.ufc-tier-remaining {
+    font-size: 0.8rem;
+    color: var(--ufc-gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+.ufc-tier-remaining i {
+    color: var(--tier-color, var(--ufc-gold));
+}
+
+/* Formulaire RSVP */
+.ufc-rsvp-form {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid var(--ufc-gray);
+}
+.ufc-rsvp-form-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+.ufc-rsvp-form-row .ufc-form-group {
+    flex: 1;
+    min-width: 180px;
+}
+.ufc-rsvp-form-row .ufc-form-group label {
+    display: block;
+    color: var(--ufc-white);
+    font-family: var(--font-title);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+.ufc-rsvp-form-row .ufc-form-group select {
+    width: 100%;
+    padding: 10px 15px !important;
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.ufc-form-group-btn {
+    flex: 0 0 auto !important;
+    min-width: auto !important;
+}
+.ufc-rsvp-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 30px !important;
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    font-family: var(--font-title) !important;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    white-space: nowrap;
+}
+.ufc-rsvp-submit-btn:hover {
+    background: var(--ufc-red-dark) !important;
+}
+
+/* Messages RSVP */
+.ufc-rsvp-success {
+    background: rgba(40, 167, 69, 0.15);
+    border: 1px solid #28a745;
+    color: #6fcf7c;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ufc-rsvp-success i {
+    color: #28a745;
+    font-size: 1.2rem;
+}
+.ufc-rsvp-error {
+    background: rgba(210, 10, 10, 0.15);
+    border: 1px solid var(--ufc-red);
+    color: #ff6b6b;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ufc-rsvp-error i {
+    color: var(--ufc-red);
+    font-size: 1.2rem;
+}
+
+/* Prompt login */
+.ufc-rsvp-login-prompt {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid var(--ufc-gray);
+    text-align: center;
+}
+.ufc-rsvp-login-prompt p {
+    color: var(--ufc-gray-light) !important;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+.ufc-rsvp-login-prompt i {
+    color: var(--ufc-gold);
+    margin-right: 5px;
+}
+
+/* Responsive tiers */
+@media (max-width: 768px) {
+    .ufc-tiers-grid {
+        grid-template-columns: 1fr;
+    }
+    .ufc-rsvp-form-row {
+        flex-direction: column;
+    }
+    .ufc-rsvp-form-row .ufc-form-group {
+        min-width: 100%;
+    }
+}
+
+/* =========================================================================
+ * 41. FIX ACCESSIBILITÉ — CONTRASTE GLOBAL
+ * =========================================================================
+ * J'ai codé ici : Corrections de contraste texte noir sur noir.
+ * On s'assure que TOUT le texte est lisible sur fond sombre.
+ */
+
+/* Paragraphes orphelins Astra */
+.ast-article-post p,
+.ast-article-single p,
+p.entry-content,
+.site-content p,
+#primary p,
+#main p {
+    color: var(--ufc-white) !important;
+}
+
+/* Titres Astra par défaut */
+.ast-article-post .entry-title a,
+.ast-blog-single-element .entry-title a,
+.ast-article-post .entry-title,
+.ast-separate-container .entry-title {
+    color: var(--ufc-white-pure) !important;
+}
+.ast-article-post .entry-title a:hover {
+    color: var(--ufc-red) !important;
+}
+
+/* Meta data (date, auteur) Astra */
+.ast-blog-meta-container,
+.ast-blog-meta-container a,
+.ast-blog-meta-container span,
+.entry-meta,
+.entry-meta a,
+.entry-meta span,
+.post-date,
+.posted-on a,
+.byline a,
+.cat-links a,
+.tag-links a,
+.comments-link a {
+    color: var(--ufc-gray-light) !important;
+}
+
+/* Listes dans le contenu */
+.entry-content ul li,
+.entry-content ol li,
+.ufc-event-content ul li,
+.ufc-event-content ol li {
+    color: var(--ufc-white) !important;
+}
+
+/* Strong / bold dans contenu */
+.entry-content strong,
+.ufc-event-content strong {
+    color: var(--ufc-white-pure) !important;
+}
+
+/* Labels de formulaires */
+label,
+.entry-content label,
+form label {
+    color: var(--ufc-white) !important;
+}
+
+/* Placeholder texte */
+::placeholder {
+    color: #666 !important;
+    opacity: 1;
+}
+
+/* =========================================================================
+ * 42. FIX LAYOUT — PADDING/MARGIN GLOBAUX
+ * =========================================================================
+ * J'ai codé ici : Fix des margins qui bloquent le contenu, padding trop grands.
+ */
+
+/* Supprimer les margins bizarres d'Astra sur le contenu */
+.ast-separate-container #primary {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.ast-separate-container .ast-article-single,
+.ast-separate-container .ast-article-post {
+    padding: 20px !important;
+}
+
+/* Pages intérieures — contenu centré proprement */
+.page:not(.home) .ast-container,
+.single .ast-container {
+    max-width: var(--container-max) !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+}
+
+/* Fix: pas de padding 0 sur les pages internes */
+.page:not(.home) #primary,
+.single:not(.single-tribe_events) #primary {
+    padding: 20px 0 !important;
+}
+
+/* Fix admin bar + sticky header */
+.admin-bar .ufc-header {
+    top: 32px;
+}
+@media (max-width: 782px) {
+    .admin-bar .ufc-header {
+        top: 46px;
+    }
+}
+
+/* Fix conteneur Astra qui coupe le contenu */
+.ast-plain-container.ast-no-sidebar #primary {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* =========================================================================
+ * 43. FIX PAGES SPÉCIFIQUES — CONTACT, MEMBRES, MON COMPTE
+ * =========================================================================
+ * J'ai codé ici : Amélioration des pages internes.
+ */
+
+/* Page contact */
+.ufc-contact-page {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+.ufc-contact-page h2 {
+    color: var(--ufc-gold) !important;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+.ufc-contact-info p {
+    color: var(--ufc-gray-light) !important;
+    line-height: 1.7;
+}
+.ufc-contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+.ufc-contact-info li {
+    color: var(--ufc-white) !important;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--ufc-gray);
+}
+.ufc-contact-form-wrap {
+    background: var(--ufc-dark);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--ufc-gray);
+}
+
+/* Formulaire contact */
+.ufc-contact-form .ufc-form-group {
+    margin-bottom: 18px;
+}
+.ufc-contact-form label {
+    display: block;
+    color: var(--ufc-white) !important;
+    font-family: var(--font-title);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+.ufc-contact-form input,
+.ufc-contact-form textarea {
+    width: 100%;
+}
+.ufc-contact-submit {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 30px !important;
+    width: auto !important;
+}
+
+/* Messages formulaire */
+.ufc-contact-success {
+    background: rgba(40, 167, 69, 0.15);
+    border: 1px solid #28a745;
+    color: #6fcf7c;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ufc-contact-error {
+    background: rgba(210, 10, 10, 0.15);
+    border: 1px solid var(--ufc-red);
+    color: #ff6b6b;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .ufc-contact-page {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================================
+ * 44. ULTIMATE MEMBER — FIX PAGES VIDES + DARK MODE COMPLET
+ * =========================================================================
+ * J'ai codé ici : Fix pour que les pages UM (mon compte, membres, etc.)
+ * affichent correctement le contenu et pas une page vide.
+ */
+
+/* Force le contenu des pages UM à s'afficher */
+.page .entry-content {
+    min-height: 200px;
+}
+
+/* UM formulaire login/register — centré */
+.um-login,
+.um-register {
+    max-width: 500px;
+    margin: 0 auto !important;
+}
+
+/* UM texte placeholder */
+.um ::placeholder {
+    color: #666 !important;
+}
+
+/* UM header de profil */
+.um .um-profile-headericon a,
+.um .um-profile-edit a {
+    color: var(--ufc-gold) !important;
+}
+
+/* UM Account tabs — meilleur style */
+.um .um-account-side {
+    background: var(--ufc-dark) !important;
+    border-right: 2px solid var(--ufc-gray) !important;
+}
+.um .um-account-side li {
+    border-bottom: 1px solid var(--ufc-gray) !important;
+}
+.um .um-account-side li a {
+    padding: 12px 18px !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all var(--transition-fast);
+}
+.um .um-account-side li a:hover {
+    background: rgba(210, 10, 10, 0.1) !important;
+    color: var(--ufc-red) !important;
+}
+.um .um-account-side li.um-active a {
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+}
+
+/* UM Account main content */
+.um .um-account-main {
+    padding: 20px !important;
+}
+.um .um-account-main h3,
+.um .um-account-main .um-account-heading {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+}
+
+/* UM texts — tout visible */
+.um p,
+.um span,
+.um div,
+.um .um-field-value {
+    color: var(--ufc-white) !important;
+}
+
+/* UM icon colors */
+.um .um-tip,
+.um .um-field-icon i {
+    color: var(--ufc-gold) !important;
+}
+
+/* UM responsive */
+@media (max-width: 768px) {
+    .um .um-account-side {
+        border-right: none !important;
+        border-bottom: 2px solid var(--ufc-gray) !important;
+    }
+}
+
+/* =========================================================================
+ * 45. ASTRA BLOG PAGE — FIX ARTICLES NON AFFICHÉS
+ * =========================================================================
+ * J'ai codé ici : Fix pour la page actualités qui n'affiche pas les articles.
+ * Astra peut cacher le contenu si le layout n'est pas correct.
+ */
+
+/* Assurer que les articles Astra sont visibles sur la page blog */
+.blog .ast-article-post {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Style des articles par défaut Astra sur la page blog — dark mode */
+.blog .ast-article-post .ast-post-format- {
+    background: var(--ufc-dark) !important;
+}
+
+/* Header titre de la page blog */
+.ast-archive-description {
+    background: transparent !important;
+    text-align: center;
+    padding: 40px 20px !important;
+}
+.ast-archive-description .ast-archive-title,
+.ast-archive-description .page-title {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    font-size: clamp(2rem, 4vw, 3rem) !important;
+}
+.ast-archive-description p {
+    color: var(--ufc-gray-light) !important;
+}
+
+/* TEC default views — dark mode */
+.tribe-events .tribe-events-l-container {
+    background: var(--ufc-black) !important;
+    padding: 20px !important;
+}
+.tribe-events .tribe-events-calendar-list__event-row {
+    background: var(--ufc-dark) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    margin-bottom: 15px !important;
+}
+.tribe-events .tribe-events-calendar-list__event-date-tag {
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+}
+.tribe-events .tribe-events-calendar-list__event-date-tag-daynum {
+    color: var(--ufc-white-pure) !important;
+}
+.tribe-events .tribe-events-calendar-list__event-date-tag-month {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* TEC header / toolbar */
+.tribe-events .tribe-events-header {
+    background: transparent !important;
+}
+.tribe-events .tribe-events-header__title {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+}
+.tribe-events .tribe-events-c-top-bar__datepicker-button {
+    color: var(--ufc-white) !important;
+}
+.tribe-events .tribe-events-c-top-bar__today-button {
+    color: var(--ufc-gold) !important;
+    border-color: var(--ufc-gold) !important;
+}
+.tribe-events .tribe-events-c-nav__list-item button,
+.tribe-events .tribe-events-c-nav__list-item a {
+    color: var(--ufc-white) !important;
+}
+
+/* TEC event descriptions in list */
+.tribe-events .tribe-events-calendar-list__event-description p,
+.tribe-events .tribe-events-calendar-list__event-venue {
+    color: var(--ufc-gray-light) !important;
+}
+
+/* =========================================================================
+ * 46. FIX HOVER EFFECTS — PAS DE TRANSLATEX/SCALE
+ * =========================================================================
+ * J'ai codé ici : Suppression de tous les effets hover scale/translateX
+ * qui sont moches selon le user. On utilise des effets subtils.
+ */
+
+/* S'assurer qu'aucune carte ne fait de transform au hover */
+.ufc-event-card:hover,
+.ufc-post-card:hover,
+.ufc-tier-card:hover,
+.ufc-footer-social a:hover,
+.ufc-hero-btn:hover,
+.ufc-auth-btn:hover,
+.ufc-card-btn:hover,
+.ufc-cta-btn:hover {
+    transform: none !important;
+}
+
+/* =========================================================================
+ * 47. FIX — ASTRA ADMIN BAR MARGIN
+ * =========================================================================
+ */
+body.admin-bar {
+    margin-top: 0 !important;
+}
+
+/* =========================================================================
+ * 48. FIX — EVENT IMAGE DISPLAY
+ * =========================================================================
+ * J'ai codé ici : Fix pour les images d'événements qui ne s'affichent pas.
+ * Force l'affichage des images dans les cartes via img tag fallback.
+ */
+.ufc-card-image img,
+.ufc-post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* =========================================================================
+ * 49. GLOBAL PAGE WRAPPER — REMOVE WHITE GAPS
+ * =========================================================================
+ * J'ai codé ici : Suppression de tous les gaps blancs.
+ */
+.ast-plain-container .site-content > .ast-container,
+.ast-page-builder-template .site-content > .ast-container {
+    background: var(--ufc-black) !important;
+}
+
+/* Toutes les pages — conteneur principal */
+.site-main,
+#main,
+.ast-primary-entry-content {
+    background: var(--ufc-black) !important;
+}
+
+/* Page Événements via TEC slug */
+body.post-type-archive-tribe_events .ast-container,
+body.single-tribe_events .site-main {
+    background: var(--ufc-black) !important;
+}
+
+/* =========================================================================
+ * 50. TRIBE EVENTS SINGLE — FIX CONTENT DISPLAY
+ * =========================================================================
+ * J'ai codé ici : Fix pour le contenu des events qui ne s'affiche pas.
+ */
+
+/* Event content lists — couleur claire */
+.ufc-event-content ul,
+.ufc-event-content ol {
+    padding-left: 20px;
+    margin: 15px 0;
+}
+.ufc-event-content li {
+    color: var(--ufc-white) !important;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+.ufc-event-content h3 {
+    color: var(--ufc-gold) !important;
+    font-size: 1.2rem;
+    margin: 20px 0 10px;
+}
+
+/* RSVP manual — dark mode */
+.ufc-rsvp-manual {
+    background: var(--ufc-black);
+    border: 1px solid var(--ufc-gray);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+.ufc-rsvp-name {
+    color: var(--ufc-white-pure) !important;
+    font-size: 1.1rem;
+}
+.ufc-rsvp-desc {
+    color: var(--ufc-gray-light) !important;
+}
+.ufc-rsvp-remaining {
+    color: var(--ufc-gold) !important;
+}
+
+/* =========================================================================
+ * 51. FORMULAIRE RSVP NATIF EVENT TICKETS — DARK MODE COMPLET
+ * =========================================================================
+ * J'ai codé ici : Style complet du formulaire RSVP natif d'Event Tickets
+ * affiché dans .ufc-event-tickets. Full width, dark, aligné.
+ */
+
+/* Conteneur RSVP principal — pleine largeur */
+.ufc-event-tickets .tribe-tickets-rsvp,
+.ufc-event-tickets .tribe-rsvp,
+.ufc-event-tickets .tribe-tickets,
+.ufc-event-tickets .tribe-tickets__form {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Wrapper Event Tickets — pas de bordure dashed/dotted */
+.ufc-event-tickets .tribe-common,
+.ufc-event-tickets .tribe-tickets__tickets-wrapper {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* Header "Vous avez X Réservations" + lien Voir */
+.ufc-event-tickets .tribe-tickets-rsvp .tribe-common-h6,
+.ufc-event-tickets .tribe-tickets-rsvp .tribe-common-h5,
+.ufc-event-tickets .tribe-tickets__rsvp-message,
+.ufc-event-tickets .tribe-tickets-rsvp > p,
+.ufc-event-tickets .tribe-rsvp .tribe-common-b1 {
+    color: var(--ufc-white) !important;
+    margin-bottom: 15px;
+}
+.ufc-event-tickets .tribe-tickets-rsvp a,
+.ufc-event-tickets .tribe-rsvp a {
+    color: var(--ufc-gold) !important;
+}
+.ufc-event-tickets .tribe-tickets-rsvp a:hover,
+.ufc-event-tickets .tribe-rsvp a:hover {
+    color: var(--ufc-red) !important;
+}
+
+/* Chaque ticket RSVP — carte pleine largeur */
+.ufc-event-tickets .tribe-tickets__tickets-item,
+.ufc-event-tickets .tribe-tickets-rsvp .tribe-tickets__item,
+.ufc-event-tickets .tribe-rsvp__ticket {
+    background: var(--ufc-black) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    margin-bottom: 15px !important;
+    padding: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 20px;
+    box-sizing: border-box !important;
+}
+.ufc-event-tickets .tribe-tickets__tickets-item:hover,
+.ufc-event-tickets .tribe-rsvp__ticket:hover {
+    border-color: var(--ufc-gold) !important;
+}
+
+/* Contenu du ticket (nom, description, places) — prend l'espace */
+.ufc-event-tickets .tribe-tickets__tickets-item-content,
+.ufc-event-tickets .tribe-rsvp__ticket-content {
+    flex: 1 !important;
+    min-width: 200px !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* Titre du ticket */
+.ufc-event-tickets .tribe-tickets__tickets-item-content-title,
+.ufc-event-tickets .tribe-tickets__tickets-item-content-title--desktop,
+.ufc-event-tickets .tribe-rsvp__ticket-name {
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+    font-size: 1.1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+    margin-bottom: 6px !important;
+}
+
+/* Description du ticket */
+.ufc-event-tickets .tribe-tickets__tickets-item-content-description,
+.ufc-event-tickets .tribe-rsvp__ticket-description {
+    color: var(--ufc-gray-light) !important;
+    font-size: 0.9rem !important;
+    line-height: 1.5;
+    margin-bottom: 8px !important;
+}
+
+/* Participants + places restantes */
+.ufc-event-tickets .tribe-tickets__tickets-item-extra,
+.ufc-event-tickets .tribe-tickets__tickets-item-extra-available,
+.ufc-event-tickets .tribe-rsvp__ticket-availability {
+    color: var(--ufc-gold) !important;
+    font-size: 0.9rem !important;
+}
+.ufc-event-tickets .tribe-tickets__tickets-item-extra-available-quantity {
+    color: var(--ufc-gold) !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
+
+/* Zone d'action RSVP (Participe / Ne sera pas présent) — côté droit */
+.ufc-event-tickets .tribe-tickets__tickets-item-quantity,
+.ufc-event-tickets .tribe-rsvp__ticket-actions,
+.ufc-event-tickets .tribe-tickets__rsvp-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+    min-width: 150px !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* J'ai codé ici : Masquer le texte "RSVP ici" — personne ne sait ce que ça veut dire.
+ * On cache uniquement le <span> texte, PAS le conteneur parent qui a les boutons. */
+.ufc-event-tickets .tribe-tickets__rsvp-actions-rsvp > span.tribe-common-h2,
+.ufc-event-tickets .tribe-tickets__rsvp-actions-rsvp > span.tribe-common-h6--min-medium,
+.ufc-event-tickets .tribe-tickets__tickets-item-quantity .tribe-common-h7,
+.ufc-event-tickets .tribe-tickets__rsvp-actions .tribe-common-h7 {
+    display: none !important;
+}
+
+/* Bouton PARTICIPE */
+.ufc-event-tickets .tribe-tickets__tickets-buy button,
+.ufc-event-tickets .tribe-tickets__form .tribe-common-c-btn,
+.ufc-event-tickets button.tribe-tickets-buy,
+.ufc-event-tickets .tribe-tickets__rsvp-actions-button-going,
+.ufc-event-tickets .tribe-rsvp__ticket-actions .tribe-common-c-btn {
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    padding: 10px 25px !important;
+    font-size: 0.85rem !important;
+    cursor: pointer;
+    transition: background var(--transition-fast) !important;
+}
+/* J'ai codé ici : Hover du bouton PARTICIPE uniquement */
+.ufc-event-tickets .tribe-tickets__rsvp-actions-button-going:hover,
+.ufc-event-tickets button.tribe-tickets-buy:hover {
+    background: var(--ufc-red-dark) !important;
+}
+
+/* J'ai codé ici : Bouton "Ne sera pas présent" — style discret sans bg */
+.ufc-event-tickets .tribe-tickets__rsvp-actions-button-not-going,
+.ufc-event-tickets .tribe-rsvp__ticket-actions a {
+    color: var(--ufc-gray-light) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 1px;
+    background: transparent !important;
+    border: none !important;
+    padding: 6px 10px !important;
+    cursor: pointer !important;
+}
+.ufc-event-tickets .tribe-tickets__rsvp-actions-button-not-going:hover,
+.ufc-event-tickets .tribe-rsvp__ticket-actions a:hover {
+    color: var(--ufc-white) !important;
+    background: transparent !important;
+}
+
+/* Supprimer la bordure dashed entre les sections */
+.ufc-event-tickets .tribe-tickets__tickets-item::before,
+.ufc-event-tickets .tribe-tickets__tickets-item::after,
+.ufc-event-tickets [class*="tribe-tickets"] hr,
+.ufc-event-tickets .tribe-common-g-row {
+    border: none !important;
+    border-color: transparent !important;
+}
+
+/* Grid row du plugin — forcer en colonne unique */
+.ufc-event-tickets .tribe-common-g-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    gap: 15px !important;
+}
+.ufc-event-tickets .tribe-common-g-col {
+    flex: 1 !important;
+    max-width: 100% !important;
+    width: auto !important;
+}
+
+/* Image/zone vide à droite — masquer si vide */
+.ufc-event-tickets .tribe-tickets__rsvp-message-image,
+.ufc-event-tickets .tribe-rsvp__ticket-image,
+.ufc-event-tickets .tribe-tickets__tickets-item-image {
+    display: none !important;
+}
+
+/* Footer du formulaire */
+.ufc-event-tickets .tribe-tickets__footer,
+.ufc-event-tickets .tribe-tickets__tickets-footer {
+    background: transparent !important;
+    border-top: 1px solid var(--ufc-gray) !important;
+    padding-top: 15px !important;
+    margin-top: 15px !important;
+    color: var(--ufc-white) !important;
+}
+
+/* Tous les textes dans le conteneur RSVP */
+.ufc-event-tickets .tribe-common-h7,
+.ufc-event-tickets .tribe-common-b1,
+.ufc-event-tickets .tribe-common-b2,
+.ufc-event-tickets .tribe-common-b3,
+.ufc-event-tickets p,
+.ufc-event-tickets span:not(.ufc-tier-remaining),
+.ufc-event-tickets label,
+.ufc-event-tickets div {
+    color: var(--ufc-white) !important;
+}
+
+/* Fix: bordures dotted du plugin */
+.ufc-event-tickets [style*="border"],
+.ufc-event-tickets [style*="dotted"] {
+    border-style: solid !important;
+    border-color: var(--ufc-gray) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ufc-event-tickets .tribe-tickets__tickets-item {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .ufc-event-tickets .tribe-tickets__tickets-item-quantity {
+        width: 100% !important;
+        align-items: flex-start !important;
+    }
+}
+
+/* =========================================================================
+ * 52. FIX — PAGE SINGLE EVENT : FULL WIDTH + RSVP VISIBLE + FORMS
+ * =========================================================================
+ * J'ai codé ici : Corrections layout de la page événement.
+ * - Container pleine largeur (supprime l'espace vide à droite)
+ * - Section RSVP toujours visible (pas cachée par l'animation)
+ * - Labels des formulaires alignés à gauche
+ * - Page attendee (/tickets/) : email visible, select lisible
+ */
+
+/* --- FIX 1 : Container Astra — pleine largeur sans espace à droite --- */
+.single-tribe_events #content > .ast-container,
+.single-tribe_events .site-content > .ast-container {
+    display: block !important;
+    width: 100% !important;
+    max-width: var(--container-max) !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+}
+
+/* Le .ufc-single-event prend 100% du container */
+.ufc-single-event {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
+}
+
+/* --- FIX 2 : Page événement — toutes les sections toujours visibles --- */
+/* J'ai codé ici : L'animation hide/show causait des sections invisibles.
+ * Sur la page single event, TOUT doit être visible. */
+.single-tribe_events .ufc-animate,
+.single-tribe_events .ufc-animate.ufc-animate-ready,
+.single-tribe_events .ufc-animate.ufc-animate-ready.ufc-visible {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* --- FIX 3 : Labels formulaire RSVP — alignés à gauche --- */
+/* J'ai codé ici : Les labels du formulaire RSVP étaient centrés, maintenant à gauche */
+.ufc-event-tickets label,
+.ufc-event-tickets .tribe-tickets__form label,
+.ufc-event-tickets .tribe-common label,
+.tribe-tickets__form label,
+.tribe-tickets-registration label,
+.tribe-tickets__attendee-tickets-item label,
+.tribe-tickets__rsvp-form label {
+    text-align: left !important;
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 6px !important;
+}
+
+/* Texte du formulaire — aligné à gauche aussi */
+.ufc-event-tickets .tribe-tickets__rsvp-form,
+.ufc-event-tickets .tribe-tickets__form,
+.ufc-event-tickets .tribe-common-form,
+.tribe-tickets__rsvp-form,
+.tribe-tickets__form {
+    text-align: left !important;
+}
+
+/* Titre du formulaire "Veuillez introduire vos information RSVP..." — centré OK */
+.ufc-event-tickets .tribe-tickets__rsvp-form-title,
+.ufc-event-tickets .tribe-tickets__form-title {
+    text-align: center !important;
+    margin-bottom: 20px !important;
+}
+
+/* Inputs du formulaire RSVP — pleine largeur, fond sombre */
+.ufc-event-tickets input[type="text"],
+.ufc-event-tickets input[type="email"],
+.ufc-event-tickets input[type="number"],
+.ufc-event-tickets input[type="tel"],
+.ufc-event-tickets textarea,
+.ufc-event-tickets select,
+.tribe-tickets__form input[type="text"],
+.tribe-tickets__form input[type="email"],
+.tribe-tickets__form input[type="number"],
+.tribe-tickets__form select,
+.tribe-tickets__form textarea {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 10px 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.95rem !important;
+}
+.ufc-event-tickets input:focus,
+.ufc-event-tickets select:focus,
+.ufc-event-tickets textarea:focus,
+.tribe-tickets__form input:focus,
+.tribe-tickets__form select:focus {
+    border-color: var(--ufc-gold) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(197, 158, 94, 0.2) !important;
+}
+
+/* --- FIX 4 : Page attendee /tickets/ — email visible --- */
+/* J'ai codé ici : L'email dans le header "Réservé par X (email)" était invisible */
+.tribe-events-tickets-attendees header,
+.tribe-events-tickets-attendees header *,
+.tribe-ticket-order-details,
+.tribe-ticket-order-details *,
+.tribe-events-tickets header,
+.tribe-events-tickets header *,
+.tribe-tickets__attendees-heading,
+.tribe-tickets__attendees-heading *,
+.user-details {
+    color: var(--ufc-white) !important;
+    background: transparent !important;
+}
+
+/* Email spécifiquement — doré pour le rendre visible */
+.tribe-events-tickets-attendees header a,
+.tribe-ticket-order-details a,
+.tribe-events-tickets header a[href*="mailto"],
+.tribe-events-tickets header span,
+.tribe-ticket-order-details span,
+.user-details a {
+    color: var(--ufc-gold) !important;
+}
+
+/* --- FIX 5 : Select dropdown — texte pas coupé --- */
+/* J'ai codé ici : Le texte du select était coupé/cropped */
+.tribe-tickets__attendee-tickets-item select,
+.tribe-tickets__form select,
+.tribe-tickets-registration select,
+.tribe-events-tickets select,
+li.tribe-tickets__attendees-list-item select {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 200px !important;
+    overflow: visible !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    background: var(--ufc-black) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c59e5e' d='M6 8L1 3h10z'/%3E%3C/svg%3E") no-repeat right 12px center !important;
+    padding-right: 35px !important;
+    color: var(--ufc-white) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 10px 35px 10px 14px !important;
+    font-size: 0.95rem !important;
+    cursor: pointer !important;
+}
+.tribe-tickets__attendee-tickets-item select option,
+.tribe-tickets__form select option,
+.tribe-events-tickets select option {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+    padding: 8px !important;
+}
+
+/* --- FIX 6 : Page /event/.../tickets/ — dark mode complet --- */
+/* J'ai codé ici : La page attendee était blanche, forcer le dark mode */
+body.single-tribe_events,
+body.single-tribe_events #page,
+body.single-tribe_events .hfeed,
+body.single-tribe_events .site-content,
+body.single-tribe_events #content {
+    background: var(--ufc-black) !important;
+    color: var(--ufc-white) !important;
+}
+
+/* Tous les wrappers Astra sur la page événement */
+body.single-tribe_events .ast-container,
+body.single-tribe_events .ast-article-single,
+body.single-tribe_events .ast-article-post,
+body.single-tribe_events .entry-content,
+body.single-tribe_events article {
+    background: transparent !important;
+    color: var(--ufc-white) !important;
+}
+
+/* Bouton Mettre à jour Réservations — style UFC */
+.tribe-events-tickets input[type="submit"],
+.tribe-events-tickets button[type="submit"],
+.tribe-tickets__attendees-update-button,
+input.tribe-events-tickets-update {
+    background: var(--ufc-red) !important;
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    border: none !important;
+    border-radius: var(--border-radius) !important;
+    padding: 12px 30px !important;
+    font-size: 0.9rem !important;
+    cursor: pointer !important;
+    transition: background var(--transition-fast) !important;
+}
+.tribe-events-tickets input[type="submit"]:hover,
+.tribe-events-tickets button[type="submit"]:hover {
+    background: var(--ufc-red-dark) !important;
+}
+
+/* --- FIX 7 : RSVP wrappers — pleine largeur du conteneur --- */
+/* J'ai codé ici : Les .tribe-tickets__rsvp-wrapper ne prenaient que 580px sur 1056px */
+.ufc-event-tickets .tribe-tickets__rsvp-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* La row flex interne — pleine largeur, PAS de bordure (seul le conteneur extérieur a la bordure rouge) */
+/* J'ai codé ici : Fond transparent, zéro bordure = plus de boîte dans boîte */
+.ufc-event-tickets .tribe-tickets__rsvp,
+.ufc-event-tickets .tribe-tickets__rsvp.tribe-common-g-row {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 20px !important;
+    align-items: center !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 20px 0 !important;
+    margin-bottom: 10px !important;
+    box-sizing: border-box !important;
+    border-bottom: 1px solid var(--ufc-gray) !important;
+}
+
+/* Colonne détails — fond transparent, pas de fond différent */
+.ufc-event-tickets .tribe-tickets__rsvp-details-wrapper,
+.ufc-event-tickets .tribe-tickets__rsvp-details-wrapper.tribe-common-g-col {
+    flex: 1 1 auto !important;
+    max-width: none !important;
+    width: auto !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+/* Colonne actions — fond transparent */
+.ufc-event-tickets .tribe-tickets__rsvp-actions-wrapper,
+.ufc-event-tickets .tribe-tickets__rsvp-actions-wrapper.tribe-common-g-col {
+    flex: 0 0 auto !important;
+    max-width: none !important;
+    width: auto !important;
+    background: transparent !important;
+    border: none !important;
+    min-width: 180px !important;
+    text-align: center !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+/* Forcer TOUS les enfants de la card RSVP au même fond transparent */
+.ufc-event-tickets .tribe-tickets__rsvp div,
+.ufc-event-tickets .tribe-tickets__rsvp section {
+    background: transparent !important;
+}
+
+/* Bouton Annuler — transparent avec bordure, zéro margin */
+.ufc-event-tickets .tribe-tickets__rsvp-form-button--cancel,
+.ufc-event-tickets button[class*="cancel"],
+.ufc-event-tickets a[class*="cancel"] {
+    background: transparent !important;
+    color: var(--ufc-gray-light) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    padding: 10px 25px !important;
+    margin: 0 !important;
+    border-radius: var(--border-radius) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    cursor: pointer !important;
+}
+.ufc-event-tickets .tribe-tickets__rsvp-form-button--cancel:hover,
+.ufc-event-tickets button[class*="cancel"]:hover {
+    border-color: var(--ufc-white) !important;
+    color: var(--ufc-white) !important;
+}
+
+/* =========================================================================
+ * 53. FIX — CARD CROP + NESTED DIVS + SELECT HEIGHT
+ * =========================================================================
+ * J'ai codé ici : Corrections des problèmes visuels restants.
+ */
+
+/* --- FIX 8 : Card RSVP crop — le contenu était coupé en bas --- */
+/* J'ai codé ici : overflow visible + padding suffisant pour tout afficher */
+.ufc-event-tickets .tribe-tickets__rsvp,
+.ufc-event-tickets .tribe-tickets__rsvp.tribe-common-g-row {
+    overflow: visible !important;
+    min-height: auto !important;
+}
+.ufc-event-tickets .tribe-tickets__rsvp-wrapper {
+    overflow: visible !important;
+}
+.ufc-event-tickets .tribe-tickets__rsvp-details-wrapper,
+.ufc-event-tickets .tribe-tickets__rsvp-actions-wrapper {
+    overflow: visible !important;
+}
+
+/* --- FIX 9 : NUCLEAR RESET — zéro boîte-dans-boîte --- */
+/* J'ai codé ici : On tue TOUTE bordure/fond/padding sur TOUT ce qui est
+ * à l'intérieur de .ufc-event-tickets. Spécificité boostée avec
+ * div[class*="..."] pour battre les sélecteurs larges du début du CSS
+ * (div[class*="tec-tickets__attendee"] à 0,1,1 etc.) */
+.ufc-event-tickets div[class*="tec-tickets"],
+.ufc-event-tickets div[class*="tribe-tickets__attendee"],
+.ufc-event-tickets div[class*="tribe-tickets__confirmation"],
+.ufc-event-tickets div[class*="tribe-tickets__order"],
+.ufc-event-tickets div[class*="tribe-common"],
+.ufc-event-tickets .tec-tickets__attendees-list,
+.ufc-event-tickets .tec-tickets__attendees-list *,
+.ufc-event-tickets .tribe-tickets__rsvp-ar,
+.ufc-event-tickets .tribe-tickets__rsvp-ar *,
+.ufc-event-tickets .tribe-tickets__rsvp-ar-sidebar,
+.ufc-event-tickets .tribe-tickets__rsvp-ar-sidebar * {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* "Vos Réservations" — pleine largeur, pas de cadre */
+.ufc-event-tickets .tec-tickets__attendees-list,
+.ufc-event-tickets .tribe-tickets__rsvp-ar {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 15px 0 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Titre "Vos Réservations" */
+.ufc-event-tickets .tec-tickets__attendees-list h3,
+.ufc-event-tickets .tribe-tickets__rsvp-ar h3 {
+    color: var(--ufc-gold) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 10px !important;
+    text-align: center !important;
+}
+
+/* Chaque carte participant — la seule sous-boîte autorisée */
+.ufc-event-tickets div.tec-tickets__attendees-list-item,
+.ufc-event-tickets div.tribe-tickets__rsvp-ar-sidebar-card {
+    background: rgba(255,255,255,0.04) !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 12px 18px !important;
+    margin-bottom: 8px !important;
+}
+
+/* Nom du participant */
+.ufc-event-tickets .tec-tickets__attendees-list-item-attendee-details-name,
+.ufc-event-tickets .tribe-tickets__rsvp-ar-sidebar-card-name {
+    color: var(--ufc-white-pure) !important;
+    font-family: var(--font-title) !important;
+    font-size: 1rem !important;
+    margin-bottom: 4px !important;
+    text-align: left !important;
+}
+
+/* Nom du ticket/place */
+.ufc-event-tickets .tec-tickets__attendees-list-item-attendee-details-rsvp,
+.ufc-event-tickets .tribe-tickets__rsvp-ar-sidebar-card-ticket {
+    color: var(--ufc-gray-light) !important;
+    font-size: 0.85rem !important;
+    text-align: left !important;
+}
+
+/* --- FIX 10 : Select dropdown — hauteur correcte, texte pas coupé --- */
+/* J'ai codé ici : Le select avait un height fixe qui coupait le texte */
+.tribe-tickets__attendee-tickets-item select,
+.tribe-tickets__form select,
+.tribe-tickets-registration select,
+.tribe-events-tickets select,
+li.tribe-tickets__attendees-list-item select,
+.ufc-event-tickets select {
+    height: auto !important;
+    min-height: 40px !important;
+    line-height: 1.4 !important;
+    padding: 10px 35px 10px 14px !important;
+    font-size: 0.95rem !important;
+    white-space: normal !important;
+    overflow: visible !important;
+}
+
+/* --- FIX 11 : "NE SERA PAS PRÉSENT" — empêcher le bg rouge hérité --- */
+/* J'ai codé ici : Le hover hérité de button:hover mettait un fond rouge horrible */
+.ufc-event-tickets .tribe-tickets__rsvp-actions-button-not-going,
+.ufc-event-tickets button.tribe-tickets__rsvp-actions-button-not-going {
+    background: transparent !important;
+    border: none !important;
+}
+.ufc-event-tickets .tribe-tickets__rsvp-actions-button-not-going:hover,
+.ufc-event-tickets button.tribe-tickets__rsvp-actions-button-not-going:hover {
+    background: transparent !important;
+    color: var(--ufc-white) !important;
+    text-decoration: underline !important;
+}
+
+/* --- FIX 12 : Fond blanc section Participants/Réservations --- */
+/* J'ai codé ici : Le conteneur des participants avait un fond blanc du plugin.
+ * On force TOUT à transparent sauf les inputs/selects/boutons. */
+.ufc-event-tickets .tribe-tickets__attendee-tickets,
+.ufc-event-tickets .tribe-tickets__attendee-tickets-container,
+.ufc-event-tickets .tribe-tickets__attendee-tickets-form,
+.ufc-event-tickets .tribe-tickets__attendee-tickets-header,
+.ufc-event-tickets .tribe-rsvp,
+.ufc-event-tickets .tribe-rsvp *,
+.ufc-event-tickets .tribe-common,
+.ufc-event-tickets .tribe-common-g-row,
+.ufc-event-tickets .tribe-common-g-col,
+.ufc-event-tickets fieldset,
+.ufc-event-tickets section[class*="tribe"],
+.ufc-event-tickets div[class*="tribe-rsvp"],
+.ufc-event-tickets div[class*="tribe-events-tickets"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Les cartes Participant 1, 2... gardent un fond sombre subtil */
+.ufc-event-tickets .tribe-tickets__attendee-tickets-item {
+    background: var(--ufc-dark) !important;
+    border: none !important;
+    border-bottom: 1px solid var(--ufc-gray) !important;
+    border-radius: 0 !important;
+    padding: 20px 5px !important;
+    margin-bottom: 0 !important;
+}
+
+/* --- FIX 13 : Espacement entre les champs du formulaire RSVP --- */
+/* J'ai codé ici : Les inputs NOM / E-MAIL / PARTICIPANTS étaient collés */
+.ufc-event-tickets .tribe-tickets__form-field,
+.ufc-event-tickets .tribe-tickets__rsvp-ar-form .tribe-tickets__form-field,
+.ufc-event-tickets .tribe-tickets__rsvp-actions-form .tribe-tickets__form-field,
+.ufc-event-tickets .tribe-tickets__form > div,
+.ufc-event-tickets .tribe-tickets__rsvp-ar-form > div,
+.ufc-event-tickets .tribe-common-form__field-group {
+    margin-bottom: 18px !important;
+}
+
+/* Labels au-dessus des inputs — espacement */
+.ufc-event-tickets .tribe-tickets__form-field label,
+.ufc-event-tickets .tribe-tickets__rsvp-ar-form label,
+.ufc-event-tickets .tribe-common-form__label {
+    margin-bottom: 6px !important;
+    display: block !important;
+}
+
+/* Inputs eux-mêmes */
+.ufc-event-tickets .tribe-tickets__form-field input,
+.ufc-event-tickets .tribe-tickets__rsvp-ar-form input,
+.ufc-event-tickets .tribe-tickets__form-field select,
+.ufc-event-tickets .tribe-tickets__rsvp-ar-form select {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 14px !important;
+}
+
+/* --- FIX 14 : Boutons ANNULER / TERMINER — alignés sur une ligne --- */
+/* J'ai codé ici : Les boutons étaient décalés et pas alignés avec les inputs */
+.ufc-event-tickets .tribe-tickets__rsvp-ar-form-buttons,
+.ufc-event-tickets .tribe-tickets__rsvp-actions-form-submit-wrapper,
+.ufc-event-tickets .tribe-tickets__form-submit,
+.ufc-event-tickets .tribe-tickets__rsvp-form-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 15px !important;
+    margin-top: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Bouton TERMINER — prend l'espace restant */
+.ufc-event-tickets .tribe-tickets__rsvp-ar-form button[type="submit"],
+.ufc-event-tickets button.tribe-tickets__rsvp-ar-form-submit,
+.ufc-event-tickets .tribe-tickets__form button[type="submit"] {
+    flex: 1 !important;
+    padding: 14px 30px !important;
+    box-sizing: border-box !important;
+}
+
+/* Bouton ANNULER — taille auto, même hauteur, ZÉRO margin parasite */
+.ufc-event-tickets .tribe-tickets__rsvp-ar-form-cancel,
+.ufc-event-tickets a.tribe-tickets__rsvp-ar-form-cancel,
+.ufc-event-tickets .tribe-tickets__rsvp-form-button--cancel,
+.ufc-event-tickets button[class*="cancel"],
+.ufc-event-tickets a[class*="cancel"] {
+    flex: 0 0 auto !important;
+    padding: 14px 25px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+    border: 1px solid var(--ufc-gray) !important;
+    border-radius: var(--border-radius) !important;
+    color: var(--ufc-gray-light) !important;
+    font-family: var(--font-title) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-size: 0.85rem !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1.2 !important;
+}
+
+/* --- FIX 15 : .tribe-rsvp-list > .tribe-item — fond blanc du plugin --- */
+/* J'ai codé ici : Ce sélecteur ancien du plugin a un fond blanc par défaut */
+.tribe-rsvp-list,
+.tribe-rsvp-list > .tribe-item,
+.tribe-rsvp-list .tribe-item,
+.tribe-item,
+.ufc-event-tickets .tribe-rsvp-list,
+.ufc-event-tickets .tribe-rsvp-list > .tribe-item,
+.ufc-event-tickets .tribe-item {
+    background: transparent !important;
+    border: none !important;
+    color: var(--ufc-white) !important;
+}
