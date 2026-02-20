@@ -23,11 +23,66 @@ add_action( 'admin_head', function() {
     echo '<style>#ufc_dashboard_overview .inside{background:#111;padding:20px;border-radius:8px}#ufc_dashboard_overview h2{background:#d20a0a;color:#fff;padding:10px 15px}</style>';
 } );
 
-// --- Meta box RSVP tiers (Or/Argent/Bronze) ---
+// =============================================================================
+// C'EST ICI — Meta box "Mettre en avant sur l'accueil"
+// Ajoute une checkbox dans l'editeur d'evenements ET d'articles.
+// L'admin coche les contenus qu'il veut voir apparaitre en priorite
+// sur la page d'accueil (shortcodes [ufc_next_events] et [ufc_latest_posts]).
+// Les contenus coches s'affichent en premier, puis les plus recents completent.
+// Meta key : _ufc_featured_home (valeur "1" si coche, vide sinon)
+// =============================================================================
+add_action( 'add_meta_boxes', 'ufc_add_featured_home_meta_box' );
+function ufc_add_featured_home_meta_box() {
+    $post_types = array( 'post', 'tribe_events' );
+    foreach ( $post_types as $pt ) {
+        add_meta_box(
+            'ufc_featured_home',
+            'Mise en avant — Accueil',
+            'ufc_render_featured_home_meta_box',
+            $pt,
+            'side',
+            'high'
+        );
+    }
+}
+
+// C'EST ICI — Rendu de la meta box (checkbox + label)
+function ufc_render_featured_home_meta_box( $post ) {
+    wp_nonce_field( 'ufc_featured_home_save', 'ufc_featured_home_nonce' );
+    $is_featured = get_post_meta( $post->ID, '_ufc_featured_home', true );
+    echo '<label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 0;">';
+    echo '<input type="checkbox" name="ufc_featured_home" value="1" ' . checked( $is_featured, '1', false ) . ' style="width:18px;height:18px;">';
+    echo '<span style="font-size:14px;">Afficher en priorité sur l\'accueil</span>';
+    echo '</label>';
+    echo '<p style="color:#888;font-size:12px;margin-top:6px;">Si coché, ce contenu apparaîtra en premier dans la section correspondante de la page d\'accueil.</p>';
+}
+
+// C'EST ICI — Sauvegarde de la meta (fonctionne pour post ET tribe_events)
+add_action( 'save_post', 'ufc_save_featured_home_meta_box' );
+function ufc_save_featured_home_meta_box( $post_id ) {
+    if ( ! isset( $_POST['ufc_featured_home_nonce'] ) || ! wp_verify_nonce( $_POST['ufc_featured_home_nonce'], 'ufc_featured_home_save' ) ) { return; }
+    if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! current_user_can( 'edit_post', $post_id ) ) { return; }
+
+    if ( ! empty( $_POST['ufc_featured_home'] ) ) {
+        update_post_meta( $post_id, '_ufc_featured_home', '1' );
+    } else {
+        delete_post_meta( $post_id, '_ufc_featured_home' );
+    }
+}
+
+// =============================================================================
+// C'EST ICI — Meta box systeme de reservation par tiers (Or / Argent / Bronze)
+// Ajoute une meta box dans l'editeur d'evenement (tribe_events) qui permet
+// a l'admin d'activer/desactiver chaque niveau de place (Or, Argent, Bronze).
+// Pour chaque tier, l'admin peut personnaliser le nom, la description et la capacite.
+// A la sauvegarde, le code cree/met a jour/supprime des tickets RSVP via Event Tickets.
+// Chaque ticket est identifie par la meta `_ufc_tier_level` (or/argent/bronze).
+// =============================================================================
 add_action( 'add_meta_boxes', function() {
     add_meta_box( 'ufc_rsvp_tiers', 'Configuration des Places UFC (Or / Argent / Bronze)', 'ufc_render_rsvp_tiers_meta_box', 'tribe_events', 'normal', 'high' );
 } );
 
+// C'EST ICI — Rendu de la meta box RSVP tiers (interface admin avec 3 blocs)
 function ufc_render_rsvp_tiers_meta_box( $post ) {
     wp_nonce_field( 'ufc_rsvp_tiers_save', 'ufc_rsvp_tiers_nonce' );
 
@@ -81,7 +136,7 @@ function ufc_render_rsvp_tiers_meta_box( $post ) {
     }
 }
 
-// --- Sauvegarde meta box RSVP ---
+// C'EST ICI — Sauvegarde des tiers RSVP (cree/met a jour/supprime les tickets)
 add_action( 'save_post_tribe_events', 'ufc_save_rsvp_tiers_meta_box', 20 );
 function ufc_save_rsvp_tiers_meta_box( $post_id ) {
     if ( ! isset( $_POST['ufc_rsvp_tiers_nonce'] ) || ! wp_verify_nonce( $_POST['ufc_rsvp_tiers_nonce'], 'ufc_rsvp_tiers_save' ) ) { return; }

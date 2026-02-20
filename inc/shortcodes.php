@@ -10,7 +10,35 @@ function ufc_shortcode_next_events( $atts ) {
         return '<p class="ufc-notice">' . esc_html__( 'Le plugin The Events Calendar est requis.', 'astra-child' ) . '</p>';
     }
 
-    $events = tribe_get_events( array( 'posts_per_page' => $count, 'start_date' => current_time( 'Y-m-d H:i:s' ), 'eventDisplay' => 'list' ) );
+    // =========================================================================
+    // C'EST ICI — Selection manuelle des evenements en accueil
+    // On recupere d'abord les evenements marques "Mettre en avant" via la meta
+    // _ufc_featured_home, puis on complete avec les plus recents jusqu'au count.
+    // Cela permet a l'admin de choisir quels evenements apparaissent en priorite.
+    // =========================================================================
+    $featured_events = tribe_get_events( array(
+        'posts_per_page' => $count,
+        'start_date'     => current_time( 'Y-m-d H:i:s' ),
+        'eventDisplay'   => 'list',
+        'meta_key'       => '_ufc_featured_home',
+        'meta_value'     => '1',
+    ) );
+
+    $featured_ids = wp_list_pluck( $featured_events, 'ID' );
+    $remaining    = $count - count( $featured_events );
+
+    if ( $remaining > 0 ) {
+        $other_events = tribe_get_events( array(
+            'posts_per_page' => $remaining,
+            'start_date'     => current_time( 'Y-m-d H:i:s' ),
+            'eventDisplay'   => 'list',
+            'post__not_in'   => $featured_ids,
+        ) );
+        $events = array_merge( $featured_events, $other_events );
+    } else {
+        $events = $featured_events;
+    }
+    // =========================================================================
 
     if ( empty( $events ) ) {
         return '<p class="ufc-notice">' . esc_html__( 'Aucun événement à venir.', 'astra-child' ) . '</p>';
@@ -54,7 +82,39 @@ function ufc_shortcode_latest_posts( $atts ) {
     $atts = shortcode_atts( array( 'count' => 3 ), $atts, 'ufc_latest_posts' );
     $count = absint( $atts['count'] );
 
-    $posts = get_posts( array( 'post_type' => 'post', 'posts_per_page' => $count, 'post_status' => 'publish', 'orderby' => 'date', 'order' => 'DESC' ) );
+    // =========================================================================
+    // C'EST ICI — Selection manuelle des articles en accueil
+    // Meme logique que pour les evenements : on recupere d'abord les articles
+    // marques "Mettre en avant" (_ufc_featured_home = 1), puis on complete
+    // avec les plus recents pour atteindre le nombre demande (count).
+    // =========================================================================
+    $featured_posts = get_posts( array(
+        'post_type'      => 'post',
+        'posts_per_page' => $count,
+        'post_status'    => 'publish',
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+        'meta_key'       => '_ufc_featured_home',
+        'meta_value'     => '1',
+    ) );
+
+    $featured_ids = wp_list_pluck( $featured_posts, 'ID' );
+    $remaining    = $count - count( $featured_posts );
+
+    if ( $remaining > 0 ) {
+        $other_posts = get_posts( array(
+            'post_type'      => 'post',
+            'posts_per_page' => $remaining,
+            'post_status'    => 'publish',
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+            'post__not_in'   => $featured_ids,
+        ) );
+        $posts = array_merge( $featured_posts, $other_posts );
+    } else {
+        $posts = $featured_posts;
+    }
+    // =========================================================================
 
     if ( empty( $posts ) ) {
         return '<p class="ufc-notice">' . esc_html__( 'Aucun article pour le moment.', 'astra-child' ) . '</p>';

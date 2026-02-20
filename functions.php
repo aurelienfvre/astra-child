@@ -48,7 +48,7 @@ add_filter( 'template_include', function( $template ) {
 
 // --- Cacher certaines pages du menu ---
 add_filter( 'wp_nav_menu_objects', function( $items ) {
-    $hidden = array( 'membres', 'contact' );
+    $hidden = array( 'membres' );
     foreach ( $items as $key => $item ) {
         if ( in_array( strtolower( trim( $item->title ) ), $hidden, true ) ) {
             unset( $items[ $key ] );
